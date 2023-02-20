@@ -1,0 +1,129 @@
+.wrapper{
+    background-color: #1B1D25;
+    min-height: 100vh;
+    position: relative;
+}
+.elementLight,.elementBoxYellow,.elementMan{
+    position: absolute;
+}
+.elementLight{
+    top: -37px;
+    right: 350px;
+}
+.elementBoxYellow{
+    bottom: 0px;
+    right: 0px;
+}
+.elementMan{
+    top: 280px;
+    right: 100px;
+}
+.formLogin,.formRegister{
+  position: relative;
+  top: 50%;
+  transform:translateY(-50%) ;
+  text-align: center;
+}
+.formLogin>.title, .formRegister>.title{
+    font-family: 'Risque', cursive;
+    font-size: 72px;
+    color: #ffff;
+    margin-bottom: 34px;
+    text-transform: uppercase;
+}
+.formLogin .formMain, .formRegister .formMain{
+    padding: 0px 170px;
+    font-family: 'Roboto', sans-serif;
+}
+.formLogin .lableForm, .formRegister .lableForm{
+    display: block;
+    text-align: left;
+    font-size: 26px;
+    font-weight: bold;
+    color: White;
+    margin-bottom: 5px;
+}
+.formLogin .lableMargin,.formRegister .lableMargin{
+    margin-top: 40px;
+}
+
+.formLogin .inputForm , .formRegister .inputForm{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: #1B1D25;
+    outline: none;
+    border-bottom: 3px solid #ffff;
+    border-right: 0px;
+    color: #ffff;
+    font-size: 18px;
+}
+.formLogin .inputForm:focus,.formRegister .inputForm:focus{
+    border-bottom: 3px solid #FFC42A;
+}
+.formLogin .textForgotPassword{
+    display: block;
+    font-size: 24px;
+    color: #ffff;
+    margin: 8px 0px 14px 0px;
+    text-align: right;
+}
+.formLogin .btnLogin,.formRegister .btnRegister{
+    width: 100%;
+    height: 75px;
+    color: #00523F;
+    font-size: 26px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #FFC42A;
+}
+.formRegister .btnRegister{
+    margin-top: 20px;
+}
+.formLogin .btnLogin:hover,.formRegister .btnRegister:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.toggleInterface{
+    color: white !important;
+    font-size: 18px !important;
+}
+.invalid-feedback{
+    color: red;
+    text-align: left;
+    margin-top: 10px;
+    display: none;
+    font-size: 17px;
+    font-style: italic;
+}
+.invalid-feedback-succes{
+    color: green;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 17px;
+    font-style: italic;
+}
+.formLogin .inputForm:focus + .invalid-feedback,.formRegister .inputForm:focus + .invalid-feedback{
+    display: block;
+}
+@media only screen and (max-width: 768px) {
+    .elementLight,.elementBoxYellow,.elementMan{
+        display: none;
+    }
+    .formLogin>.title,.formRegister>.title{
+        font-size: 42px;
+    }
+    .formLogin .formMain,.formRegister .formMain{
+        padding: 0px 15px;
+    }
+    .formLogin .lableForm,.formRegister .lableForm{
+        font-size: 16px;
+    }
+    .formLogin .textForgotPassword,.formRegister .textForgotPassword{
+        font-size: 16px;
+    }
+    .formLogin .btnLogin,.formRegister .btnRegister{
+        font-size: 18px;
+        height:50px;
+    }
+}
