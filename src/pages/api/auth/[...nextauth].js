@@ -19,6 +19,7 @@ export const authOptions = {
                 connectMongo().catch(() => res.status(405).json({ error: "Error in the Connection" }))
                 const { username, password } = credentials;
                 const user = await Users.findOne({ username }).exec()
+                console.log(user)
                 const isPasswordMatched = await user.password == md5(password) ? true : false
                 if (user && isPasswordMatched) {
                     return user
@@ -28,22 +29,22 @@ export const authOptions = {
             }
         })
     ],
-    session: {
-        strategy: "jwt"
+    callbacks: {
+        session: async ({ session, token }) => {
+            if (session?.user) {
+                session.user.id = token.uid;
+            }
+            return session;
+        },
+        jwt: async ({ user, token }) => {
+            if (user) {
+                token.uid = user.id;
+            }
+            return token;
+        },
     },
-    // callbacks: {
-    //     async session({ session, user, token }) {
-    //         if(user && user.id){
-    //             session.user.id = user.id
-    //         }
-    //         return session
-    //     },
-    //     async jwt({ token, user, account, profile, email, credentials }) {
-    //         if (user && user._id) {
-    //             token.id = user._id
-    //         }
-    //         return token
-    //     }
-    // }
+    session: {
+        strategy: 'jwt',
+    },
 }
 export default NextAuth(authOptions)
