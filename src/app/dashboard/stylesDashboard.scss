@@ -1,0 +1,59 @@
+
+// ============== Result Total ====================
+.blockResult{
+    display: flex;
+    align-items: center;
+    background-color: #2F3037;
+    height: 95px;
+    border-radius: 5px;
+}
+.blockResult>.blockIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 50px;
+    background-color: #3F405C;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-right: 25px;
+}
+.blockResult>.blockIcon>.icon{
+    color: #5C61ED;
+    font-size: 28px;
+}
+.blockResult>.result>.name{
+    margin: 6px 0px;
+}
+.blockResult>.result>.number{
+    font-weight: bold;
+    font-size: 20px;
+}
+// ============== Table ====================
+.mainTable{
+    margin-top: 31px;
+    background-color: #2F3037;
+    padding: 30px 40px;
+}
+.mainTable>.table{
+    width: 100%;
+    border-collapse: collapse;
+    overflow:auto;
+}
+.mainTable>.table>tbody:before {line-height:2em; content:"\200C"; display:block;}
+.mainTable>.table>thead>tr>th{
+    font-size: 20px;
+}
+.mainTable>.table>tbody>tr>td{
+    text-align: center;
+    vertical-align: middle;
+    height: 60px;
+}
+
+.mainTable>.table>tbody>tr:hover{
+    background-color: #5C61ED;
+    cursor: pointer;
+}
+.mainTable>.captionTable{
+    margin-bottom: 41px;
+}
