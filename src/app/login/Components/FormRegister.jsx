@@ -82,7 +82,7 @@ function FormRegister() {
   return (
     <div className={`formRegister`}>
       <img src={'/images/avatart-demo.png'} alt="" method="POST" />
-      <h1 className={`title`}>Register To Dev Khờ</h1>
+      <h1 className={`title`}>Sign up student</h1>
       <form action="" className={`formMain`} onSubmit={resultRegister}>
         {visibleError ? (<Alert severity='error' style={{ marginBottom: 30 }}>{error == '' ? 'Đăng ký không thành công' : error}</Alert>) : ''}
         {visibleSuccess ? (<Alert severity='success' style={{ marginBottom: 30 }}>Đăng ký thành công</Alert>) : ''}

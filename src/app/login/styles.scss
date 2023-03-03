@@ -18,13 +18,13 @@
     top: 280px;
     right: 100px;
 }
-.formLogin,.formRegister{
+.formLogin,.formRegister,.formRegisterTeacher{
   position: relative;
   top: 50%;
   transform:translateY(-50%) ;
   text-align: center;
 }
-.formLogin>.title, .formRegister>.title{
+.formLogin>.title, .formRegister>.title,.formRegisterTeacher .title{
     font-family: 'Risque', cursive;
     font-size: 72px;
     color: #ffff;

@@ -2,7 +2,9 @@
 import './globals.css'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import { SessionProvider } from 'next-auth/react';
-export default function RootLayout({ children,session }) {
+import { store } from 'Redux/store';
+import { Provider } from 'react-redux';
+export default function RootLayout({ children, session }) {
   const queryClient = new QueryClient();
   return (
     <html lang="en">
@@ -14,7 +16,9 @@ export default function RootLayout({ children,session }) {
       <body>
         <SessionProvider session={session}>
           <QueryClientProvider client={queryClient}>
-            {children}
+            <Provider store={store}>
+              {children}
+            </Provider>
           </QueryClientProvider>
         </SessionProvider>
       </body>

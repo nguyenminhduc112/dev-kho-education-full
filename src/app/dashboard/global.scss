@@ -68,3 +68,6 @@ a{
 .mainMenu>.Menu>.item:hover>.item_link{
     background-color: #5C61ED;
 }
+.mainMenu>.Menu>.item.active>.item_link{
+    background-color: #5C61ED;
+}

@@ -11,8 +11,9 @@ function Toggle(props) {
             aria-label="Platform"
             
         >
-            <ToggleButton value="login" className='toggleInterface'>Login</ToggleButton>
-            <ToggleButton value="register" className='toggleInterface'>Register</ToggleButton>
+            <ToggleButton value="login" className='toggleInterface'>Sign In</ToggleButton>
+            <ToggleButton value="register" className='toggleInterface'>SIGN UP</ToggleButton>
+            <ToggleButton value="registerTeacher" className='toggleInterface'>Register Teacher</ToggleButton>
         </ToggleButtonGroup>
     )
 }

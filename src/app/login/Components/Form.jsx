@@ -94,7 +94,7 @@ function Form() {
       </Box>) : null : null }
       <div className={`formLogin`}>
         <img src={'/images/avatart-demo.png'} alt="" />
-        <h1 className={`title`}>Login To Dev Khờ</h1>
+        <h1 className={`title`}>Sign in to Dev Kho</h1>
 
         <form action="" className={`formMain`} onSubmit={handleSubmit}>
           {visibleError ? (<Alert severity='error' style={{ marginBottom: 30 }}>Đăng nhập không thành công</Alert>) : ''}

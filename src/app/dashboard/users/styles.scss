@@ -1,0 +1,74 @@
+.blockTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 35px;
+}
+// =============== Form Search ================== //
+#formSearch {
+    display: flex;
+    align-items: center;
+}
+#formSearch .inputSearch{
+   background-color: #ffff;
+   width: 300px;
+   border-radius: 12px;
+   margin-right: 7px;
+}
+#formSearch .inputSearch:focus{
+    outline: none;
+    border-radius: 12px;
+    color: white;
+}
+
+// =============== Form Main ================== //
+#formMain{
+    margin-top: 36px;
+    background-color:#2F3037 ;
+    padding: 44px 54px;
+    border-radius: 10px;
+}
+
+#formMain .lableForm{
+    display: block;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 19px;
+}
+#formMain .inputForm{
+    width: 100%;
+    height: 50px;
+    padding-left: 5px;
+    font-size: 17px;
+    border-radius: 12px;
+    background-color: white;
+    outline: none;
+    border: none;
+}
+#formMain .inputForm:focus{
+    outline: 3px solid #FFC42A !important;
+}
+#formMain .inputForm.disabled{
+    background-color: #1B1D25;
+    color: white;
+    font-weight: bold;
+    opacity: 0.6;
+}
+#formMain .boxSubmit{
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#formMain .boxSubmit .btnSubmit{
+    width: 333px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    background-color: #FFA800;
+    border-radius: 2px;
+}
