@@ -48,7 +48,7 @@ function FormRegister() {
     // Validation Form
     validate.run(rules, message)
     if ((validate.getError('fullname') === null) && (validate.getError('email') === null) && (validate.getError('username') === null) && (validate.getError('password') === null) && (validate.getError('confirmPassword') === null)) {
-      registerUser(form)
+      await registerUser(form)
         .then((res) => {
           if (res.error) {
             setError(res.error)

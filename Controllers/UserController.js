@@ -46,3 +46,31 @@ export async function registerUser(req, res) {
         res.status(404).json({ error: "Error While Fetching Data" })
     }
 }
+
+export async function updateUser(req, res) {
+    try {
+        const {userID} = req.query
+        const formData = req.body
+
+        if (userID && formData) {
+            await Users.findByIdAndUpdate(userID, formData)
+            return res.status(200).json(formData)
+        }
+        res.status(404).json({ error: "User Not Selected" })
+    } catch (error) {
+        res.status(404).json({ error: "Error While Updating The Data" })
+    }
+}
+
+export async function deleteUser(req, res) {
+    try {
+        const {userID} = req.query
+        if (userID) {
+            await Users.findByIdAndDelete(userID)
+            return res.status(200).json({deleted:userID})
+        }
+        res.status(404).json({ error: "User Not Selected" })
+    } catch (error) {
+        res.status(404).json({ error: "Error While Deleting The Data" })
+    }
+}

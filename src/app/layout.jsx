@@ -13,7 +13,7 @@ export default function RootLayout({ children, session }) {
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
+      <body >
         <SessionProvider session={session}>
           <QueryClientProvider client={queryClient}>
             <Provider store={store}>

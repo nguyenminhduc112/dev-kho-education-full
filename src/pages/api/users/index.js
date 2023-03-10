@@ -1,5 +1,5 @@
 import connectMongo from "Database/conn";
-import { getUsers,getUser,getUserByEmail } from "Controllers/UserController";
+import { getUsers,getUser,getUserByEmail, updateUser,deleteUser } from "Controllers/UserController";
 export default async function handler(req, res) {
     connectMongo().catch(() => res.status(405).json({ error: "Error in the Connection" }))
     // Type of request
@@ -14,21 +14,15 @@ export default async function handler(req, res) {
         else {
             getUsers(req, res)
         }
-    } else if (method == "POST") { 
+    }  else if (method == "PUT") {
         try {
-            res.status(200).json({message:'POST'})
-        } catch (error) {
-            res.status(404).json({ error: "Error While Fetching Data" })
-        }
-    } else if (method == "PUT") {
-        try {
-            res.status(200).json({message:'PUT'})
+            updateUser(req, res)
         } catch (error) {
             res.status(404).json({ error: "Error While Fetching Data" })
         }
     } else if (method == "DELETE") {
         try {
-            res.status(200).json({message: 'DELETE'})
+            deleteUser(req, res)
         } catch (error) {
             res.status(404).json({ error: "Error While Fetching Data" })
         }

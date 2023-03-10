@@ -9,7 +9,7 @@ import '../styles.scss'
 import Header from '../../layout/Header';
 import Menu from '../../layout/Menu';
 // Components
-import ButtonRedirect from '../../components/global/ButtonRedirect';
+import ButtonRedirect from '../../../components/global/ButtonRedirect';
 import FormEditUser from './components/FormEditUser';
 
 function EditUser() {

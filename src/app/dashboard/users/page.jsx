@@ -8,7 +8,7 @@ import './styles.scss'
 // Components
 import Header from '../layout/Header';
 import Menu from '../layout/Menu';
-import ButtonRedirect from '../components/global/ButtonRedirect';
+import ButtonRedirect from '../../components/global/ButtonRedirect';
 import Table from './components/Table';
 
 function Users() {

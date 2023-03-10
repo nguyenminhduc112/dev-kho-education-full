@@ -11,7 +11,7 @@ const userSchema = new Schema({
     },
     id_role:Number,
     token:String,
-    fulllname:String,
+    fullname:String,
     email:{
         type:String,
         required:true,
