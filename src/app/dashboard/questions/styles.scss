@@ -1,0 +1,16 @@
+//================== Button ===============//
+.btn-active:hover,.btn-active.active{
+    background-color: #5C61ED !important;
+    color: white !important;
+}
+.btn-inactive:hover,.btn-inactive.active{
+    background-color: #E55353 !important;
+    color: white !important;
+}
+.btn-inactive,.btn-active{
+    width: 93px !important;
+    height: 46px !important;
+}
+.btn-inactive{
+    margin-left: 5px !important;
+}

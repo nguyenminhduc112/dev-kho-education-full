@@ -13,9 +13,9 @@ function Menu() {
       setActive('itemDashboard')
     } else if (path === '/dashboard/users' || path === '/dashboard/users/add' || path === '/dashboard/users/edit') {
       setActive('itemUsers')
-    } else if (path === '/dashboard/courses') {
+    } else if (path === '/dashboard/courses' || path === '/dashboard/courses/add' || path === '/dashboard/courses/detail') {
       setActive('itemCourses')
-    } else if (path === '/dashboard/questions') {
+    } else if (path === '/dashboard/questions' || path === '/dashboard/questions/detail') {
       setActive('itemQuestions')
     } else {
       setActive('itemCategories')

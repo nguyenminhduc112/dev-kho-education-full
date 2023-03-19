@@ -35,7 +35,7 @@ function FormAddUser() {
     const handleRegister = (formData) => {
         try {
             const id_role = formData.role
-            const register = addMutation.mutateAsync({formData, id_role})
+            const register = addMutation.mutateAsync({ formData, id_role })
             // Xử lý sau khi submit
             register.then((res) => {
                 if (res.error) {

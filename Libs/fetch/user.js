@@ -2,20 +2,20 @@
 
 const BASE_URL = "http://localhost:3000"
 
-export const getUsers = async ()=>{
+export const getUsers = async () => {
     const response = fetch(`${BASE_URL}/api/users`)
     const json = await (await response).json()
     return json
 }
 // get user
-export const getUser = async (userID)=>{
+export const getUser = async (userID) => {
     const response = fetch(`${BASE_URL}/api/users/?userID=${userID}`)
     const json = await (await response).json()
-    if(json) return json
+    if (json) return json
     return {}
 }
 
-export const updateUser = async ({formData,userID}) => {
+export const updateUser = async ({ formData, userID }) => {
     const date = new Date()
     const dateNow = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
     const data = {
@@ -31,17 +31,17 @@ export const updateUser = async ({formData,userID}) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response =  fetch(`${BASE_URL}/api/users/?userID=${userID}`, Option)
+    const response = fetch(`${BASE_URL}/api/users/?userID=${userID}`, Option)
     const json = await (await response).json()
     return json
 }
 // delete user
-export const deleteUser = async (userID)=>{
+export const deleteUser = async (userID) => {
     const Option = {
-        method:'DELETE',
-        headers:{'Content-Type':'application/json'},
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
     }
-    const response = fetch(`${BASE_URL}/api/users/?userID=${userID}`,Option)
+    const response = fetch(`${BASE_URL}/api/users/?userID=${userID}`, Option)
     const json = await (await response).json()
     return json
 }

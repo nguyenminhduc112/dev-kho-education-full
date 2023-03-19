@@ -1,25 +1,4 @@
-.blockTitle{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 35px;
-}
-// =============== Form Search ================== //
-#formSearch {
-    display: flex;
-    align-items: center;
-}
-#formSearch .inputSearch{
-   background-color: #ffff;
-   width: 300px;
-   border-radius: 12px;
-   margin-right: 7px;
-}
-#formSearch .inputSearch:focus{
-    outline: none;
-    border-radius: 12px;
-    color: white;
-}
+
 
 // =============== Form Main ================== //
 #formMain{
@@ -73,10 +52,4 @@
     border-radius: 2px;
     cursor: pointer;
     border: none;
-}
-.error{
-    color: #E55353;
-    margin-bottom: 0px;
-    font-style: italic;
-    font-weight: bold;
 }

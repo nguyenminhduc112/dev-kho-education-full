@@ -11,7 +11,7 @@ export async function getUsers(req, res) {
 // Get by id: http://localhost:3000/api/users/1
 export async function getUser(req, res) {
     try {
-        const {userID} = req.query
+        const { userID } = req.query
         const user = await Users.findById(userID)
         if (!user) return res.status(404).json({ error: "User not found" })
         res.status(200).json(user)
@@ -21,8 +21,8 @@ export async function getUser(req, res) {
 }
 export async function getUserByEmail(req, res) {
     try {
-        const {email} = req.query
-        const user = await Users.findOne({email})
+        const { email } = req.query
+        const user = await Users.findOne({ email })
         if (!user) return res.status(404).json({ error: "User not found" })
         res.status(200).json(user)
     } catch (error) {
@@ -49,7 +49,7 @@ export async function registerUser(req, res) {
 
 export async function updateUser(req, res) {
     try {
-        const {userID} = req.query
+        const { userID } = req.query
         const formData = req.body
 
         if (userID && formData) {
@@ -64,10 +64,10 @@ export async function updateUser(req, res) {
 
 export async function deleteUser(req, res) {
     try {
-        const {userID} = req.query
+        const { userID } = req.query
         if (userID) {
             await Users.findByIdAndDelete(userID)
-            return res.status(200).json({deleted:userID})
+            return res.status(200).json({ deleted: userID })
         }
         res.status(404).json({ error: "User Not Selected" })
     } catch (error) {

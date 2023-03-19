@@ -5,6 +5,7 @@ a{
     min-height: 100vh;
     background-color: #1B1D25;
     color: white;
+    padding-bottom: 10px;
 }
 // ============== Header ====================
 .header{
@@ -37,13 +38,13 @@ a{
     border-radius: 50px;
 }
 .title{
-    font-size: 36px;
-    
+    font-size: 36px !important;
 }
 // ============== Menu ====================
 .mainMenu{
     background-color: #2A2B36;
     min-height: 100vh;
+    height: 100%;
 }
 .mainMenu>.Menu{
     padding: 0;
@@ -70,4 +71,63 @@ a{
 }
 .mainMenu>.Menu>.item.active>.item_link{
     background-color: #5C61ED;
+}
+.blockTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 35px;
+}
+// =============== Form Search ================== //
+#formSearch {
+    display: flex;
+    align-items: center;
+}
+#formSearch .inputSearch{
+   background-color: #ffff;
+   width: 300px;
+   border-radius: 12px;
+   margin-right: 7px;
+}
+#formSearch .inputSearch:focus{
+    outline: none;
+    border-radius: 12px;
+    color: white;
+}
+// =============== BTN ================== //
+.btn{
+    margin-left: 5px !important;
+    color: white !important;
+}
+.btn:hover{
+    opacity: 0.8 !important;
+}
+.btn-detail{
+    background-color: #90B528 !important;
+}
+.btn-confirm{
+    background-color: #28B571 !important;
+}
+.btn-delete{
+    background-color: #E55353 !important;
+}
+.btnSubmit{
+    width: 333px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    background-color: #FFA800;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+}
+
+.error{
+    color: #E55353;
+    margin-bottom: 0px;
+    font-style: italic;
+    font-weight: bold;
 }
