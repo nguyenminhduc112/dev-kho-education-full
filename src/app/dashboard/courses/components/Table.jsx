@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 // Material UI
-import { Button } from '@material-ui/core'
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
 import Link from 'next/link'
 import { Pagination } from '@mui/material'
 // Redux
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // React Query
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 // Libs Fetch
-import { getCourses } from 'Libs/fetch/course';
+import { deleteCourse, getCourses } from 'Libs/fetch/course';
 import { getUser } from 'Libs/fetch/user';
 function Table() {
     // custom fetch course
@@ -50,10 +50,56 @@ function Table() {
         </div>
     )
 }
-const TrCourse = ({ _id,title, thumbnail, id_cat_cour, fullname, stt, status, email, id_user }) => {
+const TrCourse = ({ _id, title, thumbnail, id_cat_cour, fullname, stt, status, email, id_user }) => {
     const user = useQuery(['user', id_user], () => getUser(id_user))
+    // useMutation Delete Category Course
+    const queryClient = useQueryClient()
+    const DeleteCourse = useMutation(deleteCourse, {
+        onSuccess: () => {
+            queryClient.prefetchQuery('courses', getCourses)
+        }
+    })
+    // Custom Alert Dialog Delete category
+    const [open, setOpen] = useState(false)
+    const handleCloseDiaglog = () => {
+        setOpen(false)
+    };
+
+    const handleClickOpen = () => {
+        setOpen(true)
+    };
+    // Call when agree delete user
+    const handleDeleteCourse = () => {
+        const deleted = DeleteCourse.mutateAsync(_id)
+        deleted.then((res) => {
+            setOpen(false)
+        })
+    }
     return (
         <tr>
+            {open ? (<Dialog
+                open={open}
+                onClose={handleCloseDiaglog}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"Bạn Có Chắc Muốn Xóa Mục Lục này Không?"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+
+                        Nếu bạn chọn Agree thì khóa {title} này này sẽ bị xóa vĩnh viễn bạn cân nhắc trước khi xóa, bấm Disagree để không xóa.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+
+                    <Button onClick={handleDeleteCourse} autoFocus>
+                        Agree
+                    </Button>
+                    <Button onClick={handleCloseDiaglog}>Disagree</Button>
+                </DialogActions>
+            </Dialog>) : ''}
             <td><span>{stt}</span></td>
             <td><img src={thumbnail} width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
             <td>{title}</td>
@@ -61,8 +107,8 @@ const TrCourse = ({ _id,title, thumbnail, id_cat_cour, fullname, stt, status, em
             <td>{user.data?.fullname}</td>
             <td>{status ? 'Active' : 'Inactive'}</td>
             <td>
-                <Button variant='contained' className='btn btn-detail'><Link style={{ color: 'white' }} href={`/dashboard/courses/detail`}>Detail</Link></Button>
-                <Button variant='contained' className='btn btn-delete'>Delete</Button>
+                <Button variant='contained' className='btn btn-detail'><Link style={{ color: 'white' }} href={`/dashboard/courses/detail/?courseID=${_id}`}>Detail</Link></Button>
+                <Button variant='contained' onClick={handleClickOpen} className='btn btn-delete'>Delete</Button>
             </td>
         </tr>
     )

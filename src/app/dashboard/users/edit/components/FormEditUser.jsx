@@ -2,7 +2,7 @@
 import { Grid, InputLabel, MenuItem } from '@material-ui/core'
 import { Alert, Select } from '@mui/material'
 // Libs
-import { getUser, updateUser,getUsers } from 'Libs/fetch/user'
+import { getUser, updateUser, getUsers } from 'Libs/fetch/user'
 import React, { use, useEffect, useState } from 'react'
 // React Form Hook
 import { useForm } from 'react-hook-form'
@@ -31,7 +31,7 @@ function FormEditUser() {
     // Sau khi submit 
     const handledUpdateUser = (formData) => {
         try {
-            const uppdated = editMutation.mutateAsync({formData,userID})
+            const uppdated = editMutation.mutateAsync({ formData, userID })
             // Xử lý sau khi submit
             uppdated.then((res) => {
                 if (res.error) {
@@ -92,7 +92,7 @@ function FormEditUser() {
                                 message: "Email không đúng định dạng"
                             }
                         })} type="text" defaultValue={data.email} name='email' className='inputForm' />
-                         {!isValid && errors.email ? (<p className='error'>{errors.email?.message}</p>) : ''}
+                        {!isValid && errors.email ? (<p className='error'>{errors.email?.message}</p>) : ''}
                     </Grid>
                     <Grid item md={6} className='inputGroup'>
                         <InputLabel id="roles" className='lableForm'>Roles</InputLabel>

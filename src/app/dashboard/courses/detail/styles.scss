@@ -1,16 +1,17 @@
-#FormAddCourse {
+#FormDetailCourse {
   padding: 44px 54px;
   background-color: #2f3037;
   margin-top: 36px;
   border-radius: 10px;
 }
-#FormAddCourse .groupInput .lableForm {
+
+#FormDetailCourse .groupInput .lableForm {
   margin-bottom: 20px;
   display: block;
   font-size: 24px;
   font-weight: bold;
 }
-#FormAddCourse .groupInput .inputForm {
+#FormDetailCourse .groupInput .inputForm {
   width: 100%;
   height: 50px;
   border-radius: 12px;
@@ -19,10 +20,10 @@
   border: none;
   background-color: #edeff2;
 }
-#FormAddCourse .groupInput .inputForm:focus {
+#FormDetailCourse .groupInput .inputForm:focus {
   outline: 3px solid #ffc42a;
 }
-#FormAddCourse .groupInput .textareaForm {
+#FormDetailCourse .groupInput .textareaForm {
   height: 550px;
   padding: 10px 10px;
 }
@@ -80,6 +81,6 @@
     transform: rotate(0deg);
   }
 }
-.submitAddCourse {
+.submitUpdatedCourse {
   margin-top: 50px;
 }

@@ -44,7 +44,6 @@ function Categories() {
               </Grid>
               <Grid item md={6} >
                 <div style={{ height: '40vh', backgroundColor: '#2F3037', padding: '20px 70px', overflow: 'auto', borderRadius: 10 }}>
-
                   <CategoriesQuestion />
                 </div>
               </Grid>

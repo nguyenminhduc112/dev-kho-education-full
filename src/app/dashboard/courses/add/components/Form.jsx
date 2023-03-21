@@ -3,15 +3,16 @@ import React, { useState } from 'react'
 import { Grid, MenuItem, Select } from '@material-ui/core'
 import CropOriginalIcon from '@mui/icons-material/CropOriginal';
 // React Query
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 // React Form Hook
 import { useForm } from 'react-hook-form'
 import { Alert } from '@mui/material';
 // Libs Fetch
 import { createCourse, getCourses } from 'Libs/fetch/course';
+import { getCategoryCourses } from 'Libs/fetch/category';
 function Form() {
     const [urlImage, setUrlImage] = useState('')
-
+    const categoryCourses = useQuery('categoryCourses', getCategoryCourses)
     const { register, handleSubmit, reset, watch, formState: { errors, isValid } } = useForm({
         defaultValues: {
             title: '',
@@ -87,7 +88,6 @@ function Form() {
                     }, 5000)
                 }
             })
-
 
         } catch (error) {
             console.log(error)
@@ -173,8 +173,13 @@ function Form() {
                             defaultValue={'Default'}
                         >
                             <MenuItem value={'Default'}>---- Select Category ----</MenuItem>
-                            <MenuItem value={'Frontend'}>Frontend</MenuItem>
-                            <MenuItem value={'Backend'}>Backend</MenuItem>
+                            {categoryCourses.data?.map((categoryCoruse, index) => {
+                                return (
+                                    <MenuItem key={index} value={categoryCoruse.name}>{categoryCoruse.name}</MenuItem>
+                                )
+                            })}
+
+
                         </Select>
                         {!isValid && errors.category ? (<p className='error'>{errors.category?.message}</p>) : ''}
                     </Grid>
