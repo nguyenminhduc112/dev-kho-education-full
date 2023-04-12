@@ -12,7 +12,7 @@ import Table from './components/Table';
 import { getUser } from 'Libs/fetch/user';
 import { useRouter } from "next/navigation";
 function Dashboard() {
-  // const router = useRouter()
+  const router = useRouter()
   // const { data: session } = useSession({
   //   required: true
   // })
