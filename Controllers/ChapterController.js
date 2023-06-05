@@ -1,7 +1,8 @@
 import Chapter from "Models/chapterModel";
 export async function getChapters(req, res) {
     try {
-        const chapters = await Chapter.find().sort({ stt: 1 })
+        const { courseID } = req.query
+        const chapters = await Chapter.find({ 'id_course': courseID }).sort({ stt: 1 })
         if (!chapters) return res.status(404).json({ error: "Data not found" })
         res.status(200).json(chapters)
     } catch (error) {
@@ -24,9 +25,15 @@ export async function createChapter(req, res) {
     try {
         const formData = req.body
         if (!formData) return res.status(404).json({ error: "Form Data Not Provied" })
-        Chapter.create(formData, function (err, data) {
-            return res.status(200).json(data)
-        })
+        const STT = await Chapter.findOne({ stt: formData.stt }).exec();
+        if (STT) {
+            return res.status(200).json({ error: "STT đã tồn tại" })
+        } else {
+            Chapter.create(formData, function (err, data) {
+                return res.status(200).json(data)
+            })
+        }
+
     } catch (error) {
         res.status(404).json({ error: "Error While Fetching Data" })
     }

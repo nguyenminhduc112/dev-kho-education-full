@@ -13,6 +13,10 @@ const VideoSchema = new Schema({
         type: String,
         required: true
     },
+    id_course: {
+        type: String,
+        required: true
+    },
     stt: Number
 })
 

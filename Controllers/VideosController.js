@@ -1,7 +1,8 @@
 import Video from "Models/videoModel"
 export async function getVideos(req, res) {
     try {
-        const videos = await Video.find({})
+        const { courseID } = req.query
+        const videos = await Video.find({ 'id_course': courseID }).sort({ stt: 1 })
         if (!videos) return res.status(404).json({ error: "Data not found" })
         res.status(200).json(videos)
     } catch (error) {
@@ -35,9 +36,14 @@ export async function createVideo(req, res) {
     try {
         const formData = req.body
         if (!formData) return res.status(404).json({ error: "Form Data Not Provied" })
-        Video.create(formData, function (err, data) {
-            return res.status(200).json(data)
-        })
+        const STT = await Video.findOne({ stt: formData.stt, id_chapter: formData.id_chapter }).exec();
+        if (STT) {
+            return res.status(200).json({ error: "STT đã tồn tại" })
+        } else {
+            Video.create(formData, function (err, data) {
+                return res.status(200).json(data)
+            })
+        }
     } catch (error) {
         res.status(404).json({ error: "Error While Fetching Data" })
     }

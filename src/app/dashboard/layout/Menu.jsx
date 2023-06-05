@@ -4,8 +4,12 @@ import React, { useEffect, useState } from 'react'
 
 // Import Css
 import '../stylesDashboard.scss'
+import { useSession } from 'next-auth/react'
+import { getUser } from 'Libs/fetch/user'
+import { useQuery } from 'react-query'
 
 function Menu() {
+  const { data: session } = useSession()
   const [active, setActive] = useState('itemDashboard')
   useEffect(() => {
     const path = window.location.pathname
@@ -21,19 +25,24 @@ function Menu() {
       setActive('itemCategories')
     }
   }, [])
+  const userID = session ? session.user.id : ''
+  const user = useQuery(['getUser', userID], () => getUser(userID))
+
   return (
     <nav className='mainMenu'>
-      <a href="#">
-        <img src="/images/logoDemo.png" width={70} height={70} className='imgLogo' alt="" />
-      </a>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+        <a href="#" style={{ display: 'block' }}>
+          <img src="/images/logo.png" width={`100%`} height={70} className='imgLogo' style={{ borderRadius: '12px' }} alt="" />
+        </a>
+      </div>
       <ul className='Menu'>
         <li className={`item ${active === 'itemDashboard' ? 'active' : ''}`} ><Link className='item_link' href="/dashboard">Dashboard</Link></li>
-        <li className={`item ${active === 'itemUsers' ? 'active' : ''}`}  ><Link className='item_link' href="/dashboard/users">Users</Link></li>
+        {user.data?.id_role == 4 || user.data?.id_role == 1 ? (<li className={`item ${active === 'itemUsers' ? 'active' : ''}`}  ><Link className='item_link' href="/dashboard/users">Users</Link></li>) : ""}
         <li className={`item ${active === 'itemCourses' ? 'active' : ''}`} ><Link className='item_link' href="/dashboard/courses">Courses</Link></li>
-        <li className={`item ${active === 'itemQuestions' ? 'active' : ''}`} ><Link className='item_link' href="/dashboard/questions">Questions</Link></li>
-        <li className={`item ${active === 'itemCategories' ? 'active' : ''}`} ><Link className='item_link' href="/dashboard/categories">Categories</Link></li>
+        {user.data?.id_role == 4 || user.data?.id_role == 1 ? (<li className={`item ${active === 'itemQuestions' ? 'active' : ''}`} ><Link className='item_link' href="/dashboard/questions">Questions</Link></li>) : ''}
+        {user.data?.id_role == 1 ? (<li className={`item ${active === 'itemCategories' ? 'active' : ''}`} ><Link className='item_link' href="/dashboard/categories">Categories</Link></li>) : ""}
       </ul>
-    </nav>
+    </nav >
   )
 }
 

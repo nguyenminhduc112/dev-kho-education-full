@@ -5,7 +5,7 @@ import Validate from '../Validate';
 
 const validate = new Validate();
 function FormRegister() {
-  const [form, setForm] = useState({
+  const [formData, setForm] = useState({
     fullname: '',
     email: '',
     username: '',
@@ -38,17 +38,19 @@ function FormRegister() {
   }
   const handleValueInput = (e) => {
     // Thuật toán để lấy dữ liệu input ***
-    const data = { ...form }
+    const data = { ...formData }
     data[e.target.name] = e.target.value
     setForm(data)
+    console.log(formData)
     validate.run(rules, message)
   }
   const resultRegister = async (e) => {
+    const id_role = 2
     e.preventDefault()
     // Validation Form
     validate.run(rules, message)
     if ((validate.getError('fullname') === null) && (validate.getError('email') === null) && (validate.getError('username') === null) && (validate.getError('password') === null) && (validate.getError('confirmPassword') === null)) {
-      await registerUser(form)
+      await registerUser({ formData, id_role })
         .then((res) => {
           if (res.error) {
             setError(res.error)
@@ -81,9 +83,11 @@ function FormRegister() {
   }
   return (
     <div className={`formRegister`}>
-      <img src={'/images/avatart-demo.png'} alt="" method="POST" />
-      <h1 className={`title`}>Sign up student</h1>
-      <form action="" className={`formMain`} onSubmit={resultRegister}>
+      <div className='mb-4' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <img src={'/images/avatart-demo.png'} alt="" />
+      </div>
+      <h1 className={`title font-bold`}>Sign up student</h1>
+      <form action="" className={`formMain`} onSubmit={resultRegister} method="POST">
         {visibleError ? (<Alert severity='error' style={{ marginBottom: 30 }}>{error == '' ? 'Đăng ký không thành công' : error}</Alert>) : ''}
         {visibleSuccess ? (<Alert severity='success' style={{ marginBottom: 30 }}>Đăng ký thành công</Alert>) : ''}
         <label htmlFor="fullname" className={`lableForm`}>Fullname</label>
@@ -93,7 +97,7 @@ function FormRegister() {
             {validate.getError('fullname')}
           </div>
         ) : ''}
-        {validate.getError('fullname') === null && form.fullname != '' ? (
+        {validate.getError('fullname') === null && formData.fullname != '' ? (
           <div class="invalid-feedback-succes">
             Dữ liệu nhập của bạn phù hợp
           </div>
@@ -105,7 +109,7 @@ function FormRegister() {
             {validate.getError('email')}
           </div>
         ) : ''}
-        {validate.getError('email') === null && form.email != '' ? (
+        {validate.getError('email') === null && formData.email != '' ? (
           <div class="invalid-feedback-succes">
             Dữ liệu nhập của bạn phù hợp
           </div>
@@ -117,7 +121,7 @@ function FormRegister() {
             {validate.getError('username')}
           </div>
         ) : ''}
-        {validate.getError('username') === null && form.username != '' ? (
+        {validate.getError('username') === null && formData.username != '' ? (
           <div class="invalid-feedback-succes">
             Dữ liệu nhập của bạn phù hợp
           </div>
@@ -129,7 +133,7 @@ function FormRegister() {
             {validate.getError('password')}
           </div>
         ) : ''}
-        {validate.getError('password') === null && form.password != '' ? (
+        {validate.getError('password') === null && formData.password != '' ? (
           <div class="invalid-feedback-succes">
             Dữ liệu nhập của bạn phù hợp
           </div>
@@ -141,7 +145,7 @@ function FormRegister() {
             {validate.getError('confirmPassword')}
           </div>
         ) : ''}
-        {validate.getError('confirmPassword') === null && form.confirmPassword != '' ? (
+        {validate.getError('confirmPassword') === null && formData.confirmPassword != '' ? (
           <div class="invalid-feedback-succes">
             Dữ liệu nhập của bạn phù hợp
           </div>

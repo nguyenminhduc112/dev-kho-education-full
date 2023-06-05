@@ -18,7 +18,7 @@ function CategoriesCourses() {
   const queryClient = useQueryClient()
   const addMutation = useMutation(createCategoryCourse, {
     onSuccess: () => {
-      queryClient.prefetchQuery('categoryCourses', getCategoryCourses)
+      queryClient.prefetchQuery('chapters', getCh)
     }
   })
   // status create category

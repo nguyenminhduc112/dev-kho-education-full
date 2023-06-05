@@ -1,0 +1,29 @@
+.detail {
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+.boxListCourse__course {
+  overflow: hidden;
+}
+.boxListCourse__title {
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 24px;
+}
+.boxListCourse__course__img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+.boxListCourse__course__img:hover {
+  opacity: 0.9;
+}
+.boxListCourse__course__title {
+  margin: 5px 0px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.boxListCourse__course__link {
+  color: #5c61ed;
+}

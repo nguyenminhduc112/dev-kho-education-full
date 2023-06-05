@@ -11,6 +11,8 @@ import Header from '../../layout/Header';
 import Menu from '../../layout/Menu';
 import ButtonRedirect from '@/app/components/global/ButtonRedirect';
 import Form from './components/Form';
+import FormAddChapter from './components/FormAddChapter';
+import FormAddVideo from './components/FormAddVideo';
 
 function DetailCourses() {
     const { data: session } = useSession()
@@ -28,6 +30,8 @@ function DetailCourses() {
                         <ButtonRedirect url={`/dashboard/courses`} name='Back' />
                         <div id='FormDetailCourse'>
                             <Form />
+                            <FormAddChapter />
+                            <FormAddVideo />
                         </div>
                     </Grid>
                 </Grid>

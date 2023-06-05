@@ -76,11 +76,11 @@ function Form() {
   const { isLoading, isError, data, error } = useQuery(['user', userID], () => getUser(userID))
 
   if (session) {
-    if(data){
+    if (data) {
       if (data.id_role == 1 || data.id_role == 3 || data.id_role == 4) {
         router.push('/dashboard')
       } else {
-        router.push('/')
+        router.back()
       }
     }
   }
@@ -89,14 +89,16 @@ function Form() {
 
   return (
     <>
-     {session ? !isLoading ? ( <Box sx={{ position:'fixed' ,width:'100%',height:'100vh',top:0,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor: 'rgba(90, 90, 90, 0.5)',zIndex:1000}}>
+      {session ? !isLoading ? (<Box sx={{ position: 'fixed', width: '100%', height: '100vh', top: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(90, 90, 90, 0.5)', zIndex: 1000 }}>
         <CircularProgress />
-      </Box>) : null : null }
+      </Box>) : null : null}
       <div className={`formLogin`}>
-        <img src={'/images/avatart-demo.png'} alt="" />
-        <h1 className={`title`}>Sign in to Dev Kho</h1>
+        <div className='mb-4' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <img src={'/images/avatart-demo.png'} alt="" />
+        </div>
+        <h1 className={`title font-bold`}>Sign in to Dev Kho</h1>
 
-        <form action="" className={`formMain`} onSubmit={handleSubmit}>
+        <form action="" className={`formMain`} onSubmit={handleSubmit} method='POST'>
           {visibleError ? (<Alert severity='error' style={{ marginBottom: 30 }}>Đăng nhập không thành công</Alert>) : ''}
           <label htmlFor="username" className={`lableForm`}>Username</label>
           <input id='username' type="text" name='username' className={`inputForm`} onChange={handleValueInput} />

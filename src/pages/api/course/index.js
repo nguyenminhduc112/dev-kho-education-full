@@ -1,5 +1,5 @@
 import connectMongo from "Database/conn";
-import { createCourse, deleteCourse, getCourse, getCourses, updateCourse } from "Controllers/CourseController";
+import { createCourse, deleteCourse, getCourse, getCourses, getCoursesByCategory, getCoursesByUserID, updateCourse } from "Controllers/CourseController";
 export default async function handler(req, res) {
     connectMongo().catch(() => res.status(405).json({ error: "Error in the Connection" }))
     // Type of request
@@ -8,6 +8,10 @@ export default async function handler(req, res) {
     if (method == "GET") {
         if (req.query.courseID) {
             getCourse(req, res)
+        } else if (req.query.categoryID) {
+            getCoursesByCategory(req, res)
+        } else if (req.query.userID) {
+            getCoursesByUserID(req, res)
         }
         else {
             getCourses(req, res)

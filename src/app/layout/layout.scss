@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+// ============= Header =============
+* {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+
+.header {
+  background-color: #ffff;
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+}
+.header .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .btnLogout {
+  display: block;
+  padding: 10px 25px;
+  background-color: #e55353;
+  color: #ffff;
+  margin-left: 15px;
+  border-radius: 10px;
+}
+.header .btnLogin {
+  display: block;
+  padding: 10px 25px;
+  background-color: #2a2b36;
+  color: #ffff;
+  margin-left: 15px;
+  border-radius: 10px;
+}
+.header .btnLogout:hover {
+  opacity: 0.8;
+}
+.header .nameUser {
+  font-size: 18px;
+  font-weight: bold;
+}
+.header .avartar {
+  margin-right: 15px;
+  border-radius: 50px;
+}
+.title {
+  font-size: 36px !important;
+}
+// =============== Form Search ================== //
+#formSearch {
+  display: flex;
+  align-items: center;
+}
+#formSearch .inputSearch {
+  background-color: #ffff;
+  width: 300px;
+  height: 50px;
+  margin-right: 7px;
+  border: 1px solid #2a2b36;
+  border-radius: 20px;
+  padding-left: 15px;
+  font-size: 18px;
+}
+
+#formSearch .inputSearch:focus {
+  outline: none;
+}
+// ============== Menu ====================
+.mainMenu {
+  background-color: #ffff;
+  min-height: 100vh;
+  height: 100%;
+  position: fixed;
+  z-index: 10000;
+}
+.mainMenu > .Menu {
+  padding: 0;
+}
+.mainMenu > .Menu > .item {
+  list-style-type: none;
+  margin-bottom: 15px;
+}
+.mainMenu > .Menu > .item > .item_link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  color: #000;
+  font-size: 17px;
+  font-weight: bold;
+  height: 60px;
+  margin: 0px 20px;
+  padding: 0px 10px;
+}
+.mainMenu > .Menu > .item:hover > .item_link {
+  background-color: #edede9;
+}
+.mainMenu > .Menu > .item.active > .item_link {
+  background-color: #edede9;
+}
+.blockTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 35px;
+}
+.btnLogin:hover,
+button:hover {
+  opacity: 0.9;
+}

@@ -8,11 +8,32 @@ export async function getCourses(req, res) {
         res.status(404).json({ error: "Error While Fetching Data" })
     }
 }
+
+export async function getCoursesByUserID(req, res) {
+    try {
+        const { userID } = req.query
+        const courses = await Course.find({ id_user: userID })
+        if (!courses) return res.status(404).json({ error: "Data not found" })
+        res.status(200).json(courses)
+    } catch (error) {
+        res.status(404).json({ error: "Error While Fetching Data" })
+    }
+}
 // Get by id: http://localhost:3000/api/course/1
 export async function getCourse(req, res) {
     try {
         const { courseID } = req.query
         const course = await Course.findById(courseID)
+        if (!course) return res.status(404).json({ error: "Data not found" })
+        res.status(200).json(course)
+    } catch (error) {
+        res.status(404).json({ error: "Error While Fetching Data" })
+    }
+}
+export async function getCoursesByCategory(req, res) {
+    try {
+        const { categoryID } = req.query
+        const course = await Course.find({ id_cat_cour: categoryID })
         if (!course) return res.status(404).json({ error: "Data not found" })
         res.status(200).json(course)
     } catch (error) {

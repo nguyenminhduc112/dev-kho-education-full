@@ -22,7 +22,7 @@ function AddCourse() {
                     <Grid item md={2}>
                         <Menu />
                     </Grid>
-                    <Grid item md={10} style={{ padding: '0px 50px' }}>
+                    <Grid item md={10} style={{ padding: '30px 50px' }}>
                         <Header name='Add Course' />
                         <ButtonRedirect url={`/dashboard/courses`} name='Back' />
                         <Form />

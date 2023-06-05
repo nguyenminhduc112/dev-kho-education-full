@@ -175,7 +175,7 @@ function Form() {
                             <MenuItem value={'Default'}>---- Select Category ----</MenuItem>
                             {categoryCourses.data?.map((categoryCoruse, index) => {
                                 return (
-                                    <MenuItem key={index} value={categoryCoruse.name}>{categoryCoruse.name}</MenuItem>
+                                    <MenuItem key={index} value={categoryCoruse._id}>{categoryCoruse.name}</MenuItem>
                                 )
                             })}
 

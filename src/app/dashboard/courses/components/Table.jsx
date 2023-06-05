@@ -8,9 +8,11 @@ import { useDispatch, useSelector } from 'react-redux';
 // React Query
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 // Libs Fetch
-import { deleteCourse, getCourses } from 'Libs/fetch/course';
-import { getUser } from 'Libs/fetch/user';
+import { deleteCourse, getCourses, getCoursesByUserID } from 'Libs/fetch/course';
+import { useSession } from 'next-auth/react'
+import { getUser } from 'Libs/fetch/user'
 function Table() {
+    const { data: session } = useSession()
     // custom fetch course
     // const queryClient = useQueryClient()
     // const deteledUser = useMutation(deleteUser, {
@@ -19,35 +21,66 @@ function Table() {
     //     }
     // })
 
+    const userID = session ? session.user.id : ''
+    const user = useQuery(['getUser', userID], () => getUser(userID))
     // danh sách khóa học
     const courses = useQuery('courses', getCourses)
+    // danh dách khoa học theo userID
+    const coursesByUserID = useQuery(['coursesByUserID', userID], () => getCoursesByUserID(userID))
     return (
-        <div className='mainTable'>
-            <h2 className='captionTable'>List Courses</h2>
-            {!courses.isLoading ? (<table className='table' >
+        <>
+            {user.data?.id_role === 1 || user.data?.id_role == 4 ? (<div className='mainTable'>
+                <h2 className='captionTable'>List Courses</h2>
+                {!courses.isLoading ? (<table className='table' >
 
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Catergory</th>
-                        <th>Actor</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {courses.data.map((course, index) => {
-                        course.stt = index + 1
-                        return (
-                            <TrCourse {...course} key={index} />
-                        )
-                    })}
-                </tbody>
-            </table>) : (<div>Loading.....</div>)}
-            <Pagination count={10} variant="outlined" shape="rounded" color="secondary" className='pagination' style={{ marginTop: 50, float: 'right', color: 'white' }} />
-        </div>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Catergory</th>
+                            <th>Actor</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {courses.data.map((course, index) => {
+                            course.stt = index + 1
+                            return (
+                                <TrCourse {...course} key={index} />
+                            )
+                        })}
+                    </tbody>
+                </table>) : (<div>Loading.....</div>)}
+                <Pagination count={10} variant="outlined" shape="rounded" color="secondary" className='pagination' style={{ marginTop: 50, float: 'right', color: 'white' }} />
+            </div>) : (<div className='mainTable'>
+                <h2 className='captionTable'>List Courses</h2>
+                {!coursesByUserID.isLoading ? (<table className='table' >
+
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Catergory</th>
+                            <th>Actor</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {coursesByUserID.data.map((course, index) => {
+                            course.stt = index + 1
+                            return (
+                                <TrCourse {...course} key={index} />
+                            )
+                        })}
+                    </tbody>
+                </table>) : (<div>Loading.....</div>)}
+                <Pagination count={10} variant="outlined" shape="rounded" color="secondary" className='pagination' style={{ marginTop: 50, float: 'right', color: 'white' }} />
+            </div>)}
+        </>
     )
 }
 const TrCourse = ({ _id, title, thumbnail, id_cat_cour, fullname, stt, status, email, id_user }) => {

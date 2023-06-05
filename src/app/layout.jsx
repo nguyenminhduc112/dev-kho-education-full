@@ -1,9 +1,9 @@
 'use client';
-import './globals.css'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import { SessionProvider } from 'next-auth/react';
 import { store } from 'Redux/store';
 import { Provider } from 'react-redux';
+import "./styles.scss";
 export default function RootLayout({ children, session }) {
   const queryClient = new QueryClient();
   return (

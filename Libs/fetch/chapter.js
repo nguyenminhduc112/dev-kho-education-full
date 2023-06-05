@@ -1,7 +1,7 @@
 const BASE_URL = "http://localhost:3000"
 
-export const getChapters = async () => {
-    const response = fetch(`${BASE_URL}/api/chapter`)
+export const getChapters = async (courseID) => {
+    const response = fetch(`${BASE_URL}/api/chapter/?courseID=${courseID}`)
     const json = await (await response).json()
     return json
 }
@@ -12,10 +12,10 @@ export const getChapter = async (chapterID) => {
     if (json) return json
     return {}
 }
-export const createChapter = async ({ formData, id_course }) => {
+export const createChapter = async ({ formData, courseID }) => {
     const data = {
-        name: formData.name,
-        id_course: id_course,
+        name: formData.chapter,
+        id_course: courseID,
         stt: formData.stt,
     }
     const Option = {
@@ -29,7 +29,7 @@ export const createChapter = async ({ formData, id_course }) => {
 }
 export const updateChapter = async (formData) => {
     const data = {
-        name: formData.name,
+        name: formData.chapter,
         stt: formData.stt,
     }
     const Option = {

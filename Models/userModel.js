@@ -1,25 +1,25 @@
-import { Schema , models,model } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
 const userSchema = new Schema({
-    username:{
-        type:String,
-        required:true
+    username: {
+        type: String,
+        required: true
     },
-    password:{
-        type:String,
-        required:true
+    password: {
+        type: String,
+        required: true
     },
-    id_role:Number,
-    token:String,
-    fullname:String,
-    email:{
-        type:String,
-        required:true,
-        unique:true
+    id_role: Number,
+    token: String,
+    fullname: String,
+    email: {
+        type: String,
+        required: true,
+        unique: true
     },
-    creacte_time:String,
+    creacte_time: String,
     updated_time: String
 })
 
-const Users = models.user|| model('user',userSchema)
+const Users = models.user || model('user', userSchema)
 export default Users

@@ -9,8 +9,9 @@ function Toggle(props) {
             exclusive
             onChange={props.handleChange}
             aria-label="Platform"
-            
+
         >
+            <ToggleButton value="home" className='toggleInterface'>Home</ToggleButton>
             <ToggleButton value="login" className='toggleInterface'>Sign In</ToggleButton>
             <ToggleButton value="register" className='toggleInterface'>SIGN UP</ToggleButton>
             <ToggleButton value="registerTeacher" className='toggleInterface'>Register Teacher</ToggleButton>

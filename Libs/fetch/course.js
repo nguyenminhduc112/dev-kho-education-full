@@ -4,10 +4,21 @@ export const getCourses = async () => {
     const json = await (await response).json()
     return json
 }
-
+export const getCoursesByCategory = async (categoryID) => {
+    const response = fetch(`${BASE_URL}/api/course/?categoryID=${categoryID}`)
+    const json = await (await response).json()
+    return json
+}
 
 export const getCourse = async (courseID) => {
     const response = fetch(`${BASE_URL}/api/course/?courseID=${courseID}`)
+    const json = await (await response).json()
+    if (json) return json
+    return {}
+}
+
+export const getCoursesByUserID = async (userID) => {
+    const response = fetch(`${BASE_URL}/api/course/?userID=${userID}`)
     const json = await (await response).json()
     if (json) return json
     return {}

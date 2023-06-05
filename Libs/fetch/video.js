@@ -1,22 +1,27 @@
 const BASE_URL = "http://localhost:3000"
 
-export const getVideos = async () => {
-    const response = fetch(`${BASE_URL}/api/video`)
+export const getVideos = async (courseID) => {
+    const response = fetch(`${BASE_URL}/api/video/?courseID=${courseID}`)
     const json = await (await response).json()
     return json
 }
-
+export const getVideosByChapterID = async (chapterID) => {
+    const response = fetch(`${BASE_URL}/api/video/?chapterID=${chapterID}`)
+    const json = await (await response).json()
+    return json
+}
 export const getVideo = async (videoID) => {
     const response = fetch(`${BASE_URL}/api/video/?videoID=${videoID}`)
     const json = await (await response).json()
     if (json) return json
     return {}
 }
-export const createVideo = async (formData) => {
+export const createVideo = async ({ formData, courseID }) => {
     const data = {
         name: formData.name,
         id_video_youtube: formData.id_video_youtube,
         id_chapter: formData.id_chapter,
+        id_course: courseID,
         stt: formData.stt,
     }
     const Option = {
@@ -49,7 +54,7 @@ export const deleteVideo = async (videoID) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     }
-    const response = fetch(`${BASE_URL}/api/chapter/?videoID=${videoID}`, Option)
+    const response = fetch(`${BASE_URL}/api/video/?videoID=${videoID}`, Option)
     const json = await (await response).json()
     return json
 }

@@ -20,7 +20,7 @@ function DetailQuestion() {
                     <Grid item md={2}>
                         <Menu />
                     </Grid>
-                    <Grid item md={10} style={{ padding: '0px 50px' }}>
+                    <Grid item md={10} style={{ padding: '30px 50px' }}>
                         <Header name='Detail Questions' />
                         <ButtonRedirect url={`/dashboard/questions`} name='Back' />
                     </Grid>

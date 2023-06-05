@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 // Material UI
 import { Grid, MenuItem, Select } from '@material-ui/core'
 import CropOriginalIcon from '@mui/icons-material/CropOriginal';
-// React Query
+// React Querys
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 // React Form Hook
 import { useForm } from 'react-hook-form'
@@ -176,7 +176,7 @@ function Form() {
                     >
                         {categoryCourses.data?.map((categoryCoruse, index) => {
                             return (
-                                <MenuItem key={index} value={categoryCoruse.name}>{categoryCoruse.name}</MenuItem>
+                                <MenuItem key={index} value={categoryCoruse._id}>{categoryCoruse.name}</MenuItem>
                             )
                         })}
 

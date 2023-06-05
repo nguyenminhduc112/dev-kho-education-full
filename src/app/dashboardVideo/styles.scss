@@ -1,0 +1,27 @@
+.boxVideo {
+  margin-top: 20px;
+}
+.boxVideo__title {
+  font-size: 31px;
+  font-weight: bold;
+  margin: 10px 0px 20px 0px;
+}
+.section__content__title {
+  margin-bottom: 20px;
+}
+
+.section__content__text {
+  display: block !important;
+  margin-bottom: 20px;
+  padding: 20px 10px;
+  color: #2a2b36;
+  border-radius: 12px;
+}
+.section__content__text:hover {
+  background-color: #2a2b36;
+  color: #fff;
+}
+.section__content__text.active {
+  background-color: #2a2b36;
+  color: #fff;
+}

@@ -13,9 +13,25 @@ import CategoriesCourses from './components/CategoriesCourses';
 import ListCourses from './components/ListCourses';
 import CategoriesQuestion from './components/CategoriesQuestion';
 import ListQuestion from './components/ListQuestion';
-
+import { useRouter } from 'next/navigation';
+import { getUser } from 'Libs/fetch/user';
 function Categories() {
-  const { data: session } = useSession()
+  const router = useRouter()
+  const { data: session } = useSession({
+    required: true
+  })
+  if (!session) {
+    return (
+      <></>
+    )
+  } else {
+    const user = getUser(session.user.id)
+    user.then((res) => {
+      if (res.id_role == 2 || res.id_role == 3) {
+        router.push('/404')
+      }
+    })
+  }
   return (
     <>
       <CssBaseline />
@@ -24,7 +40,7 @@ function Categories() {
           <Grid item md={2}>
             <Menu />
           </Grid>
-          <Grid item md={10} style={{ padding: '0px 50px' }}>
+          <Grid item md={10} style={{ padding: '30px 50px' }}>
             <Header name='Categories' />
             <Grid container spacing={2} style={{ marginTop: '70px' }}>
               <Grid item md={6}>

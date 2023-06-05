@@ -9,25 +9,25 @@ import Header from './layout/Header';
 import Menu from './layout/Menu';
 import ResultTotal from './components/ResultTotal';
 import Table from './components/Table';
-import { getUser } from 'Libs/fetch/user';
 import { useRouter } from "next/navigation";
+import { getUser } from 'Libs/fetch/user';
 function Dashboard() {
   const router = useRouter()
-  // const { data: session } = useSession({
-  //   required: true
-  // })
-  // if (!session) {
-  //   return (
-  //     <></>
-  //   )
-  // } else {
-  //   const user = getUser(session.user.id)
-  //   user.then((res) => {
-  //     if (res.id_role == 2) {
-  //       router.push('/404')
-  //     }
-  //   })
-  // }
+  const { data: session } = useSession({
+    required: true
+  })
+  if (!session) {
+    return (
+      <></>
+    )
+  } else {
+    const user = getUser(session.user.id)
+    user.then((res) => {
+      if (res.id_role == 2) {
+        router.push('/404')
+      }
+    })
+  }
   return (
     <>
       <CssBaseline />
@@ -36,7 +36,7 @@ function Dashboard() {
           <Grid item md={2}>
             <Menu />
           </Grid>
-          <Grid item md={10} style={{ padding: '0px 50px' }}>
+          <Grid item md={10} style={{ padding: '30px 50px' }}>
             <Header name='Dashboard' />
             <h2>Learning State</h2>
             <Grid container spacing={2}>
