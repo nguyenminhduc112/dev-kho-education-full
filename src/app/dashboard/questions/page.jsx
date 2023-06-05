@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation';
 import { getUser } from 'Libs/fetch/user';
 function Questions() {
   const router = useRouter()
+  const [active, ChangActive] = useState('inactive')
   const { data: session } = useSession({
     required: true
   })
@@ -31,7 +32,7 @@ function Questions() {
       }
     })
   }
-  const [active, ChangActive] = useState('inactive')
+
   // Change active button
   const handleChangAcitve = () => {
     if (active === 'active') {

@@ -80,7 +80,7 @@ function FormAddVideo() {
                     >
                         {chapters.data?.map((chapter, index) => {
                             return (
-                                <MenuItem value={chapter._id}>{chapter.name}</MenuItem>
+                                <MenuItem key={chapter._id} value={chapter._id}>{chapter.name}</MenuItem>
                             )
                         })}
 

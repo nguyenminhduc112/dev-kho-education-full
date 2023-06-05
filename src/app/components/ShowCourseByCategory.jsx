@@ -14,7 +14,7 @@ function ShowCourseByCategory() {
         <div >
             {categoryCourses.data ? categoryCourses.data?.map((category) => {
                 return (
-                    <div className='boxListCourse'>
+                    <div key={category._id} className='boxListCourse'>
                         <h2 className='boxListCourse__title'>Khóa học dành cho {category.name}</h2>
                         <Grid container spacing={4}>
                             <Tr categoryID={category._id} />
@@ -33,7 +33,7 @@ function Tr({ categoryID }) {
             return (
                 courses.data?.map((course) => {
                     return (
-                        <Grid item md={3} xs={12}>
+                        <Grid key={course._id} item md={3} xs={12}>
                             <div className="boxListCourse__course">
                                 <Link href={`/detailCourse/?courseID=${course._id}`} >
                                     <img src={`${course.thumbnail}`} alt="" className='boxListCourse__course__img' />

@@ -30,8 +30,7 @@ export default function MyCourse() {
                     <h2 className='title font-bold mb-5'>Khóa học của tôi</h2>
                     {myCourses.data ? myCourses.data?.map((mycourse) => {
                         return (
-
-                            <Grid container spacing={4}>
+                            <Grid key={mycourse._id} container spacing={4}>
                                 <Tr courseID={mycourse.id_course} videoID={mycourse.id_video} />
                             </Grid>
                         )

@@ -37,7 +37,7 @@ export default function Roadmap() {
                     <Grid container spacing={3}>
                         <Grid item md={2}>
                             <div className="itemRoadmap">
-                                <a href="https://roadmap.sh/frontend" target='_blank' className='itemRoadmap__name'>
+                                <a href="https://roadmap.sh/frontend" target='_blank' rel="noreferrer" className='itemRoadmap__name'>
                                     FrontEnd
                                 </a>
                             </div>
@@ -45,7 +45,7 @@ export default function Roadmap() {
                         {/* End */}
                         <Grid item md={2}>
                             <div className="itemRoadmap">
-                                <a href="https://roadmap.sh/backend" target='_blank' className='itemRoadmap__name'>
+                                <a href="https://roadmap.sh/backend" target='_blank' rel="noreferrer" className='itemRoadmap__name'>
                                     BackEnd
                                 </a>
                             </div>
@@ -53,7 +53,7 @@ export default function Roadmap() {
                         {/* End */}
                         <Grid item md={2}>
                             <div className="itemRoadmap">
-                                <a href="https://roadmap.sh/full-stack" target='_blank' className='itemRoadmap__name'>
+                                <a href="https://roadmap.sh/full-stack" target='_blank' rel="noreferrer" className='itemRoadmap__name'>
                                     Full Stack
                                 </a>
                             </div>

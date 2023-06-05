@@ -101,7 +101,7 @@ export default function DashboardVideo() {
                                 <h3 className='section__content__title' style={{ fontSize: 24, fontWeight: 'bold' }}>Nội dung khóa học</h3>
                                 {chapters.data?.map((chapter) => {
                                     return (
-                                        <Accordion>
+                                        <Accordion key={chapter._id}>
                                             <AccordionSummary
                                                 expandIcon={<ExpandMoreIcon />}
                                                 aria-controls="panel1a-content"
@@ -148,7 +148,7 @@ function VideoByChapter({ userID, status, setStatus, videoID, courseID, chapterI
             return (
                 videos.data?.map((video, index) => {
                     return (
-                        <Link style={{ display: 'block' }} onClick={() => {
+                        <Link key={video._id} style={{ display: 'block' }} onClick={() => {
                             setStatus(status ? false : true)
                             // handleWhenClickVideoNew()
                         }} href={`/dashboardVideo?courseID=${courseID}&videoID=${video._id}`} className={`section__content__text ${video._id === videoID ? 'active' : ''}`}>{index + 1}. {video.name}</Link>

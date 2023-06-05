@@ -37,7 +37,7 @@ export default function Category() {
                     <Grid container spacing={3}>
                         {getCoursesCategory.data ? getCoursesCategory.data?.map((course) => {
                             return (
-                                <Grid item md={3} xs={12}>
+                                <Grid key={course._id} item md={3} xs={12}>
                                     <div className="boxListCourse__course">
                                         <Link href={`/detailCourse/?courseID=${course._id}`} >
                                             <img src={`${course.thumbnail}`} alt="" className='boxListCourse__course__img' />

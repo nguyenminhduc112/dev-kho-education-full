@@ -84,7 +84,7 @@ export default function DetailCourse() {
                                 <h3 className='section__content__title'>Nội dung khóa học</h3>
                                 {chapters.data?.map((chapter) => {
                                     return (
-                                        <Accordion>
+                                        <Accordion key={chapter._id}>
                                             <AccordionSummary
                                                 expandIcon={<ExpandMoreIcon />}
                                                 aria-controls="panel1a-content"
@@ -130,7 +130,7 @@ function VideoByChapter({ chapterID }) {
             return (
                 videos.data?.map((video, index) => {
                     return (
-                        <p className='section__content__textVideo'>{index + 1}. {video.name}</p>
+                        <p key={video._id} className='section__content__textVideo'>{index + 1}. {video.name}</p>
                     )
                 })
             )

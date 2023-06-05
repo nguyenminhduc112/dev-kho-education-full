@@ -41,7 +41,7 @@ export default function Category() {
                     <Grid container spacing={3}>
                         {categoryCourses.data ? categoryCourses.data?.map((category) => {
                             return (
-                                <Grid item md={2}>
+                                <Grid key={category._id} item md={2}>
                                     <div className="itemRoadmap">
                                         <Link href={`/courses?categoryID=${category._id}`}
                                             className='itemRoadmap__name'>
