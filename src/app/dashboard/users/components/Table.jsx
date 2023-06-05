@@ -13,9 +13,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 import ButtonRedirect from '../../../components/global/ButtonRedirect'
 // API
 import { getUsers, deleteUser } from 'Libs/fetch/user'
-// Redux
-import { useDispatch, useSelector } from 'react-redux';
-import { dialogDeleteVisible } from '../reducers/UserSlice';
+
 import Image from 'next/image';
 
 function Table() {
@@ -68,21 +66,20 @@ const TrUser = ({ _id, fullname, username, stt, id_role, email }) => {
       queryClient.prefetchQuery('users', getUsers)
     }
   })
+  const [dialogDeleteVisible, setDialogDeleteVisible] = useState(false)
   // Custom Alert Dialog Delete User
-  const open = useSelector((state) => state.crudUser.client.open)
-  const dispatch = useDispatch()
   const handleCloseDiaglog = () => {
-    dispatch(dialogDeleteVisible(false))
+    setDialogDeleteVisible(false)
   };
 
   const handleClickOpen = () => {
-    dispatch(dialogDeleteVisible(true))
+    setDialogDeleteVisible(true)
   };
   // Call when agree delete user
   const handleDeleteUser = () => {
     const deleted = deteledUser.mutateAsync(_id)
     deleted.then((res) => {
-      dispatch(dialogDeleteVisible(false))
+      setDialogDeleteVisible(false)
     })
   }
 
@@ -90,7 +87,7 @@ const TrUser = ({ _id, fullname, username, stt, id_role, email }) => {
     return (
       <tr>
         <Dialog
-          open={open}
+          open={dialogDeleteVisible}
           onClose={handleCloseDiaglog}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"

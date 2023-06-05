@@ -1,6 +1,7 @@
+import React, { useState } from 'react'
 import { Alert } from '@mui/material';
 import { registerUser } from 'Libs/fetch/register';
-import React, { useState } from 'react'
+
 import Validate from '../Validate';
 import Image from 'next/image';
 

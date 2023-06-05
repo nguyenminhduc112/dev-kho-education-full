@@ -1,8 +1,7 @@
 'use client';
 import React from 'react'
 import { Button, Grid } from "@material-ui/core";
-import { getUser } from "Libs/fetch/user";
-import { signOut, useSession } from "next-auth/react"
+
 import { useRouter } from "next/navigation";
 import Header from "../layout/Header";
 import Menu from "../layout/Menu";

@@ -1,6 +1,7 @@
 'use client';
-import { useSession } from 'next-auth/react'
 import React from 'react'
+import { useSession } from 'next-auth/react'
+
 import { CssBaseline, Grid, TextField } from '@material-ui/core'
 // SCSS
 import '../../global.scss'

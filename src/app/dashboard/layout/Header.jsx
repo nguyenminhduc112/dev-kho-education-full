@@ -1,5 +1,6 @@
-import { signOut } from 'next-auth/react'
 import React from 'react'
+import { signOut } from 'next-auth/react'
+
 import '../stylesDashboard.scss'
 import { useSession } from 'next-auth/react'
 import { getUser } from 'Libs/fetch/user'
