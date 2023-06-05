@@ -7,6 +7,7 @@ import FormRegister from './Components/FormRegister'
 import FormRegisterTeacher from './Components/FormRegisterTeacher';
 import './styles.scss'
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 export default function Home() {
     const [alignment, setAlignment] = React.useState('login');
     const router = useRouter()
@@ -33,9 +34,9 @@ export default function Home() {
                         {alignment === 'login' ? <Form /> : alignment === 'register' ? <FormRegister /> : <FormRegisterTeacher />}
                     </Grid>
                 </Grid>
-                <img src={'/images/boxFaccyYellow.png'} className={`elementBoxYellow`} alt="" style={{ bottom: alignment === 'login' ? '0px' : '100px' }} />
-                <img src={'/images/light.png'} className={`elementLight`} alt="" style={{ top: alignment === 'login' ? '-37px' : '0px' }} />
-                <img src={'/images/manShitDown.png'} className={`elementMan`} style={{ top: alignment === 'login' ? '280px' : '400px' }} alt="" />
+                <Image width={500} height={300} src={'/images/boxFaccyYellow.png'} className={`elementBoxYellow`} alt="" style={{ bottom: alignment === 'login' ? '0px' : '200px' }} />
+                <Image width={200} height={100} src={'/images/light.png'} className={`elementLight`} alt="" style={{ top: alignment === 'login' ? '-37px' : '0px' }} />
+                <Image width={300} height={300} src={'/images/manShitDown.png'} className={`elementMan`} style={{ top: alignment === 'login' ? '280px' : '400px' }} alt="" />
             </div>
         </>
     )

@@ -1,10 +1,11 @@
+import Image from 'next/image'
 import React from 'react'
 
 function FormRegisterTeacher() {
     return (
         <div className={`formRegisterTeacher`}>
             <div className='mb-4' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <img src={'/images/avatart-demo.png'} alt="" />
+                <Image width={400} height={400} src={'/images/avatart-demo.png'} alt="" />
             </div>
             <h1 className={`title font-bold`}>Register Teacher</h1>
             <div className='mb-4' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { useQuery } from 'react-query';
 // Validation
 import Validate from '../Validate'
+import Image from 'next/image';
 
 const validate = new Validate();
 function Form() {
@@ -94,7 +95,7 @@ function Form() {
       </Box>) : null : null}
       <div className={`formLogin`}>
         <div className='mb-4' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <img src={'/images/avatart-demo.png'} alt="" />
+          <Image width={400} height={400} src={'/images/avatart-demo.png'} alt="" />
         </div>
         <h1 className={`title font-bold`}>Sign in to Dev Kho</h1>
 

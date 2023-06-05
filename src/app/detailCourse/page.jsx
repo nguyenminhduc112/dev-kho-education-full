@@ -26,6 +26,7 @@ import { useQuery } from 'react-query';
 import { getVideos, getVideosByChapterID } from 'Libs/fetch/video';
 import { Alert } from '@mui/material';
 import { getMyCourseByUserIDAndCourseID } from 'Libs/fetch/myCourse';
+import Image from 'next/image';
 
 export default function DetailCourse() {
     const { data: session } = useSession()
@@ -103,7 +104,7 @@ export default function DetailCourse() {
                         </Grid>
                         <Grid item md={4}>
                             <section className='section__about'>
-                                <img src={course.data?.thumbnail} className='section__about__img' alt="" />
+                                <Image src={course.data?.thumbnail} width={500} height={200} className='section__about__img' alt="" />
 
                                 <p className='section__about__price'>Miễn phí</p>
                                 {course.data?.status ? myCourse.data?.length == 0 ? (<div style={{ textAlign: 'center' }}><Link className='section__about__btnReg' href={`/dashboardVideo/?courseID=${courseID}&videoID=${videoIDFrist}`}>Đăng ký học</Link></div>) : (<Alert style={{ margin: '0px 50px' }} severity="info">Bạn đang học khóa này</Alert>) : ''}

@@ -11,6 +11,7 @@ import "./styles.scss"
 import { getMyCourseByUserID } from 'Libs/fetch/myCourse';
 import { getCourse } from 'Libs/fetch/course';
 import Link from 'next/link';
+import Image from 'next/image';
 export default function MyCourse() {
     const { data: session } = useSession({
         required: true
@@ -49,7 +50,7 @@ function Tr({ courseID, videoID }) {
             <Grid item md={3} xs={12}>
                 <div className="boxListCourse__course">
                     <Link href={`/dashboardVideo/?courseID=${course.data?._id}&videoID=${videoID}`} >
-                        <img src={`${course.data?.thumbnail}`} alt="" className='boxListCourse__course__img' />
+                        <Image width={500} height={200} src={`${course.data?.thumbnail}`} alt="" className='boxListCourse__course__img' />
                     </Link>
                     <div className="boxListCourse__course__title">{course.data?.title}</div>
                     <Link href={`/dashboardVideo/?courseID=${course.data?._id}&videoID=${videoID}`} className='boxListCourse__course__link'>Tiếp tục học</Link>

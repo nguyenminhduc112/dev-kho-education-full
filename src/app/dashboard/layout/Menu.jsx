@@ -7,6 +7,7 @@ import '../stylesDashboard.scss'
 import { useSession } from 'next-auth/react'
 import { getUser } from 'Libs/fetch/user'
 import { useQuery } from 'react-query'
+import Image from 'next/image'
 
 function Menu() {
   const { data: session } = useSession()
@@ -32,7 +33,7 @@ function Menu() {
     <nav className='mainMenu'>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
         <a href="#" style={{ display: 'block' }}>
-          <img src="/images/logo.png" width={`100%`} height={70} className='imgLogo' style={{ borderRadius: '12px' }} alt="" />
+          <Image src="/images/logo.png" width={300} height={70} className='imgLogo' style={{ borderRadius: '12px' }} alt="" />
         </a>
       </div>
       <ul className='Menu'>

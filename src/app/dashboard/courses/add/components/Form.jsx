@@ -10,6 +10,7 @@ import { Alert } from '@mui/material';
 // Libs Fetch
 import { createCourse, getCourses } from 'Libs/fetch/course';
 import { getCategoryCourses } from 'Libs/fetch/category';
+import Image from 'next/image';
 function Form() {
     const [urlImage, setUrlImage] = useState('')
     const categoryCourses = useQuery('categoryCourses', getCategoryCourses)
@@ -113,7 +114,7 @@ function Form() {
                         <div class="image-input">
                             <input type="file" accept="image/*" id="imageInput" onChange={onChangeImages} />
                             <label for="imageInput" class="image-button"><CropOriginalIcon className='iconImage' /> Choose image</label>
-                            <img src={urlImage} class="image-preview" />
+                            <Image width={500} height={200} src={urlImage} class="image-preview" />
                         </div>
                     </Grid>
                     <Grid item md={6} className="groupInput">

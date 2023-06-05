@@ -6,6 +6,7 @@ import { signOut, useSession } from "next-auth/react"
 import { useRouter } from "next/navigation";
 import Header from "../layout/Header";
 import Menu from "../layout/Menu";
+import Image from 'next/image';
 export default function About() {
   // const router = useRouter()
   // const { data: session } = useSession({
@@ -37,7 +38,7 @@ export default function About() {
           <p className='leading-6 mb-3'>Hơn nữa, chúng tôi luôn cập nhật các khóa học mới nhất và sử dụng phương pháp học tập linh hoạt, giúp các bạn có thể học tập bất cứ khi nào và ở bất cứ đâu. Với khóa học trực tuyến của chúng tôi, các bạn sẽ không còn phải trả tiền cho chi phí di chuyển cũng như lưu trú khi học tập.</p>
           <p className='leading-6 mb-3'>Chúng tôi hy vọng các bạn sẽ tham gia và khám phá các khóa học trực tuyến tại trang web của chúng tôi và tận dụng các chức năng đăng blog và đặt câu hỏi để chia sẻ kinh nghiệm học tập của mình. Cảm ơn các bạn đã ghé thăm trang web của chúng tôi!</p>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '24px' }}>
-            <img src="/images/learning.jpg" width={`40%`} alt="" style={{ borderRadius: '12px' }} />
+            <Image src="/images/learning.jpg" width={500} height={100} style={{ borderRadius: '12px' }} />
           </div>
         </Grid>
       </Grid>

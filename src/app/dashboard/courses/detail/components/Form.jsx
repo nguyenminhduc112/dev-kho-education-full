@@ -10,6 +10,7 @@ import { Alert } from '@mui/material';
 // Libs Fetch
 import { getCourse, getCourses, updateCourse } from 'Libs/fetch/course';
 import { getCategoryCourses } from 'Libs/fetch/category';
+import Image from 'next/image';
 
 function Form() {
     const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -116,7 +117,7 @@ function Form() {
                     <div class="image-input">
                         <input type="file" accept="image/*" id="imageInput" onChange={onChangeImages} />
                         <label for="imageInput" class="image-button"><CropOriginalIcon className='iconImage' /> Choose image</label>
-                        <img src={urlImage == '' ? course.data?.thumbnail : urlImage} class="image-preview" />
+                        <Image width={500} height={200} src={urlImage == '' ? course.data?.thumbnail : urlImage} class="image-preview" />
                     </div>
                 </Grid>
                 <Grid item md={6} className="groupInput">

@@ -3,6 +3,7 @@ import React from 'react'
 import { Button } from '@material-ui/core'
 import Link from 'next/link'
 import { Pagination } from '@mui/material'
+import Image from 'next/image'
 function Table() {
     return (
         <div className='mainTable'>
@@ -23,7 +24,7 @@ function Table() {
                 <tbody>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>So sánh giữa funtion component và class component</td>
                         <td>Nguyễn Minh Đức</td>
                         <td>Question</td>
@@ -36,7 +37,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>So sánh giữa funtion component và class component</td>
                         <td>Nguyễn Minh Đức</td>
                         <td>Question</td>
@@ -49,7 +50,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>So sánh giữa funtion component và class component</td>
                         <td>Nguyễn Minh Đức</td>
                         <td>Question</td>
@@ -62,7 +63,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>So sánh giữa funtion component và class component</td>
                         <td>Nguyễn Minh Đức</td>
                         <td>Question</td>
@@ -75,7 +76,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>So sánh giữa funtion component và class component</td>
                         <td>Nguyễn Minh Đức</td>
                         <td>Question</td>
@@ -88,7 +89,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>So sánh giữa funtion component và class component</td>
                         <td>Nguyễn Minh Đức</td>
                         <td>Question</td>
@@ -101,7 +102,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>So sánh giữa funtion component và class component</td>
                         <td>Nguyễn Minh Đức</td>
                         <td>Question</td>
@@ -114,7 +115,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>So sánh giữa funtion component và class component</td>
                         <td>Nguyễn Minh Đức</td>
                         <td>Question</td>
@@ -127,7 +128,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>So sánh giữa funtion component và class component</td>
                         <td>Nguyễn Minh Đức</td>
                         <td>Question</td>
@@ -140,7 +141,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>So sánh giữa funtion component và class component</td>
                         <td>Nguyễn Minh Đức</td>
                         <td>Question</td>
@@ -153,7 +154,7 @@ function Table() {
                     </tr>
                 </tbody>
             </table>
-            <Pagination count={10}  variant="outlined" shape="rounded" color="secondary" className='pagination' style={{ marginTop: 50, float: 'right', color: 'white' }} />
+            <Pagination count={10} variant="outlined" shape="rounded" color="secondary" className='pagination' style={{ marginTop: 50, float: 'right', color: 'white' }} />
         </div>
     )
 }

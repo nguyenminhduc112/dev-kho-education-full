@@ -8,6 +8,7 @@ import * as reactQuery from 'react-query'
 // List Fetch
 import { getCategoryCourses } from 'Libs/fetch/category'
 import { getCoursesByCategory } from 'Libs/fetch/course'
+import Image from 'next/image'
 function ShowCourseByCategory() {
     const categoryCourses = reactQuery.useQuery('categoryCourses', getCategoryCourses)
     return (
@@ -36,7 +37,7 @@ function Tr({ categoryID }) {
                         <Grid key={course._id} item md={3} xs={12}>
                             <div className="boxListCourse__course">
                                 <Link href={`/detailCourse/?courseID=${course._id}`} >
-                                    <img src={`${course.thumbnail}`} alt="" className='boxListCourse__course__img' />
+                                    <Image width={500} height={200} src={`${course.thumbnail}`} alt="" className='boxListCourse__course__img' />
                                 </Link>
                                 <div className="boxListCourse__course__title">{course.title}</div>
                                 <Link href={`/detailCourse/?courseID=${course._id}`} className='boxListCourse__course__link'>Xem chi tiết khóa học</Link>

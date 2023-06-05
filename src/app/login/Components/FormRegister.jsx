@@ -2,6 +2,7 @@ import { Alert } from '@mui/material';
 import { registerUser } from 'Libs/fetch/register';
 import React, { useState } from 'react'
 import Validate from '../Validate';
+import Image from 'next/image';
 
 const validate = new Validate();
 function FormRegister() {
@@ -84,7 +85,7 @@ function FormRegister() {
   return (
     <div className={`formRegister`}>
       <div className='mb-4' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <img src={'/images/avatart-demo.png'} alt="" />
+        <Image width={400} height={400} src={'/images/avatart-demo.png'} alt="" />
       </div>
       <h1 className={`title font-bold`}>Sign up student</h1>
       <form action="" className={`formMain`} onSubmit={resultRegister} method="POST">

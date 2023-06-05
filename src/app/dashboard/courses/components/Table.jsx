@@ -11,6 +11,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { deleteCourse, getCourses, getCoursesByUserID } from 'Libs/fetch/course';
 import { useSession } from 'next-auth/react'
 import { getUser } from 'Libs/fetch/user'
+import Image from 'next/image';
 function Table() {
     const { data: session } = useSession()
     // custom fetch course
@@ -134,7 +135,7 @@ const TrCourse = ({ _id, title, thumbnail, id_cat_cour, fullname, stt, status, e
                 </DialogActions>
             </Dialog>) : ''}
             <td><span>{stt}</span></td>
-            <td><img src={thumbnail} width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+            <td><Image src={thumbnail} width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
             <td>{title}</td>
             <td>{id_cat_cour}</td>
             <td>{user.data?.fullname}</td>

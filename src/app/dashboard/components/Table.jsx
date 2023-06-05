@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 function Table() {
@@ -22,7 +23,7 @@ function Table() {
                 <tbody>
                     <tr>
                         <td><span>1</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{borderRadius:'5px'}} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>ReactJs Nâng Cao</td>
                         <td>FrontEnd</td>
                         <td>650</td>
@@ -33,7 +34,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>2</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{borderRadius:'5px'}} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>ReactJs Nâng Cao</td>
                         <td>FrontEnd</td>
                         <td>650</td>
@@ -44,7 +45,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>3</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{borderRadius:'5px'}} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>ReactJs Nâng Cao</td>
                         <td>FrontEnd</td>
                         <td>650</td>
@@ -55,7 +56,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>4</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{borderRadius:'5px'}} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>ReactJs Nâng Cao</td>
                         <td>FrontEnd</td>
                         <td>650</td>
@@ -66,7 +67,7 @@ function Table() {
                     </tr>
                     <tr>
                         <td><span>5</span></td>
-                        <td><img src="/images/courses/react.png" width={40} height={40} alt="" style={{borderRadius:'5px'}} /></td>
+                        <td><Image src="/images/courses/react.png" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
                         <td>ReactJs Nâng Cao</td>
                         <td>FrontEnd</td>
                         <td>650</td>

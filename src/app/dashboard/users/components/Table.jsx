@@ -16,6 +16,7 @@ import { getUsers, deleteUser } from 'Libs/fetch/user'
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { dialogDeleteVisible } from '../reducers/UserSlice';
+import Image from 'next/image';
 
 function Table() {
 
@@ -111,7 +112,7 @@ const TrUser = ({ _id, fullname, username, stt, id_role, email }) => {
         </Dialog>
 
         <td><span>{stt}</span></td>
-        <td><img src="/images/avartar_users/avartar_admin.jpg" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
+        <td><Image src="/images/avartar_users/avartar_admin.jpg" width={40} height={40} alt="" style={{ borderRadius: '5px' }} /></td>
         <td>{fullname}</td>
         <td>{username}</td>
         <td>{id_role == 2 ? 'Student' : id_role == 3 ? 'Teacher' : 'Checker'}</td>
