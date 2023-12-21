@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import './showCourrseByCategory.scss'
 // Material UI
-import { Grid } from '@material-ui/core'
+import { Box, CircularProgress, Grid } from '@material-ui/core'
 // React Query
 import * as reactQuery from 'react-query'
 // List Fetch
@@ -11,8 +11,12 @@ import { getCoursesByCategory } from 'Libs/fetch/course'
 import Image from 'next/image'
 function ShowCourseByCategory() {
     const categoryCourses = reactQuery.useQuery('categoryCourses', getCategoryCourses)
+
     return (
-        <div >
+        <React.Fragment >
+            {categoryCourses.isLoading ? (<Box sx={{ position: 'fixed', width: '100%', height: '100vh', top: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(90, 90, 90, 0.5)', zIndex: 1000 }}>
+                <CircularProgress />
+            </Box>) : null}
             {categoryCourses.data ? categoryCourses.data?.map((category) => {
                 return (
                     <div key={category._id} className='boxListCourse'>
@@ -24,7 +28,7 @@ function ShowCourseByCategory() {
                 )
             }) : 'Không có category'}
 
-        </div>
+        </React.Fragment>
     )
 }
 function Tr({ categoryID }) {

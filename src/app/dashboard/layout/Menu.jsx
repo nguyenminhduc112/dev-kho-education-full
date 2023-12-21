@@ -31,7 +31,7 @@ function Menu() {
   const user = useQuery(['getUser', userID], () => getUser(userID))
 
   return (
-    <nav className='mainMenu'>
+    <nav className='mainMenu' style={{ backgroundColor: '#1b1d25' }}>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 20 }}>
         <a href="#" style={{ display: 'block' }}>
           <Image src="/images/logo.png" width={300} height={70} className='imgLogo' style={{ borderRadius: '12px' }} alt="" />

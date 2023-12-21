@@ -11,7 +11,7 @@ function Header({ name }) {
   const userID = session ? session.user.id : ''
   const user = useQuery(['getUser', userID], () => getUser(userID))
   return (
-    <div className='header'>
+    <div className='header' style={{ backgroundColor: '#1b1d25' }}>
       <h1 className='title'>{name}</h1>
       <div className="info">
         <Image src="/images/avartar_users/avartar_admin.jpg" width={60} height={60} className='avartar' alt="" />

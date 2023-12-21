@@ -7,6 +7,7 @@ import { createCategoryCourse, getCategoryCourses } from 'Libs/fetch/category'
 import { useForm } from 'react-hook-form'
 // React Query
 import { useMutation, useQueryClient } from 'react-query'
+import { getChapter, getChapters } from 'Libs/fetch/chapter'
 
 function CategoriesCourses() {
   const { register, handleSubmit, reset, watch, formState: { errors, isValid } } = useForm({
@@ -18,7 +19,7 @@ function CategoriesCourses() {
   const queryClient = useQueryClient()
   const addMutation = useMutation(createCategoryCourse, {
     onSuccess: () => {
-      queryClient.prefetchQuery('chapters', getCh)
+      queryClient.prefetchQuery('chapters', getChapters)
     }
   })
   // status create category

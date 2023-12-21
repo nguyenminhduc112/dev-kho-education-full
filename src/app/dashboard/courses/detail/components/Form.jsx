@@ -11,12 +11,14 @@ import { Alert } from '@mui/material';
 import { getCourse, getCourses, updateCourse } from 'Libs/fetch/course';
 import { getCategoryCourses } from 'Libs/fetch/category';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
+import { getUser } from 'Libs/fetch/user';
+import { useSearchParams } from 'next/navigation';
 
 function Form() {
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
-    var courseID = params.courseID
+    const { data: session } = useSession()
+    const params = useSearchParams()
+    var courseID = params.get('courseID')
     const [urlImage, setUrlImage] = useState('')
     const categoryCourses = useQuery('categoryCourses', getCategoryCourses)
     const course = useQuery(['course', courseID], () => getCourse(courseID))
@@ -25,6 +27,8 @@ function Form() {
     const [isSuccess, setIsSuccess] = useState(false)
     const [isError, setIsError] = useState(false)
     const [error, setError] = useState("")
+    const userID = session ? session.user.id : ''
+    const user = useQuery(['getUser', userID], () => getUser(userID))
     // Addmutation user
     const queryClient = useQueryClient()
     const updateMutation = useMutation(updateCourse, {
@@ -144,7 +148,7 @@ function Form() {
                     })} rows={20} defaultValue={course.data?.request} />
                     {!isValid && errors.request ? (<p className='error'>{errors.request?.message}</p>) : ''}
                 </Grid>
-                <Grid item md={6} className="groupInput">
+                {user.data?.id_role == 4 || user.data?.id_role == 1 ? (<Grid item md={6} className="groupInput">
                     <lable className="lableForm">
                         Status
                     </lable>
@@ -161,7 +165,7 @@ function Form() {
                         <MenuItem value={1}>Active</MenuItem>
                     </Select>
                     {!isValid && errors.status ? (<p className='error'>{errors.status?.message}</p>) : ''}
-                </Grid>
+                </Grid>) : ""}
                 <Grid item md={6} className="groupInput">
                     <lable className="lableForm">
                         Category

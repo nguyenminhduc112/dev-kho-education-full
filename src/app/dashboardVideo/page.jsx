@@ -10,7 +10,7 @@ import { getVideos, getVideosByChapterID } from 'Libs/fetch/video';
 import { signOut, useSession } from "next-auth/react"
 
 // Next Router
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 // Component
 import Header from "../layout/Header";
 import Menu from "../layout/Menu";
@@ -29,11 +29,9 @@ export default function DashboardVideo() {
     const [status, setStatus] = useState(false)
     const router = useRouter()
     // Get params CourseID
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
-    var courseID = params.courseID
-    var videoID = params.videoID
+    const params = useSearchParams()
+    var courseID = params.get('courseID')
+    var videoID = params.get('videoID')
     // Fetch Chapter
     const chapters = useQuery(['chapters', courseID], () => getChapters(courseID))
     // Function quay trở về trang cũ
@@ -42,30 +40,26 @@ export default function DashboardVideo() {
     }
 
     // Fetch myCourse
-    if (session) {
-        var userID = session.user.id
-    }
-
-    // const myCourse = useQuery(['myCourse', { userID, courseID }], () => getMyCourseByUserIDAndCourseID({ userID, courseID }))
+    var userID = session ? session.user.id : ''
+    const myCourse = useQuery(['myCourse', { userID, courseID }], () => getMyCourseByUserIDAndCourseID({ userID, courseID }))
     // AddMutation
-    // const addMutation = useMutation(createMyCourse, {
-    //     onSuccess: () => {
-    //         queryClient.prefetchQuery(['myCourse', { userID, courseID }], () => getMyCourseByUserIDAndCourseID({ userID, courseID }))
-    //     }
-    // })
-    // if (myCourse.data?.length == 0) {
-    //     const formData = {
-    //         id_user: userID,
-    //         id_course: courseID,
-    //         id_video: videoID
-    //     }
-    //     const createMyCourse = addMutation.mutateAsync(formData)
-    //     createMyCourse.then((res) => {
-    //         if (!res.error) {
-    //             setStatus(!status)
-    //         }
-    //     })
-    // }
+    const addMutation = useMutation(createMyCourse, {
+        onSuccess: () => {
+            queryClient.prefetchQuery(['myCourse', { userID, courseID }], () => getMyCourseByUserIDAndCourseID({ userID, courseID }))
+        }
+    })
+
+    if (myCourse.refetch.length == 0) {
+        const formData = {
+            id_user: userID,
+            id_course: courseID,
+            id_video: videoID
+        }
+        const createMyCourse = addMutation.mutateAsync(formData)
+        createMyCourse.then((res) => {
+            setStatus(!status)
+        })
+    }
     // Kiểm tra page này phải đăng nhập bằng tải khoản sinh viên
     if (!session) {
         return (
@@ -78,7 +72,6 @@ export default function DashboardVideo() {
                 router.push('/404')
             }
         })
-
 
     }
 

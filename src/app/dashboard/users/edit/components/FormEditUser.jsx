@@ -8,12 +8,11 @@ import { getUser, updateUser, getUsers } from 'Libs/fetch/user'
 import { useForm } from 'react-hook-form'
 // React Query
 import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { useSearchParams } from 'next/navigation'
 
 function FormEditUser() {
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
-    var userID = params.userID
+    const params = useSearchParams()
+    var userID = params.get('params')
     const { isLoading, data } = useQuery(['user', userID], () => getUser(userID))
     const { register, handleSubmit, reset, watch, formState: { errors, isValid } } = useForm()
     // handle event

@@ -9,11 +9,10 @@ import { Alert } from '@mui/material';
 // List Fetch
 import { getChapter, getChapters } from 'Libs/fetch/chapter';
 import { createVideo, deleteVideo, getVideos } from 'Libs/fetch/video';
+import { useSearchParams } from 'next/navigation';
 function FormAddVideo() {
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
-    var courseID = params.courseID
+    const params = useSearchParams()
+    var courseID = params.get('courseID')
     const { register, handleSubmit, reset, watch, formState: { errors, isValid } } = useForm()
     // use Query chapter and videos
     const chapters = useQuery(['chapters', courseID], () => getChapters(courseID))
@@ -22,7 +21,7 @@ function FormAddVideo() {
     const queryClient = useQueryClient()
     const addMutation = useMutation(createVideo, {
         onSuccess: () => {
-            queryClient.prefetchQuery(['videos', courseID], () => getChapters(courseID))
+            queryClient.prefetchQuery(['videos', courseID], () => getVideos(courseID))
         }
     })
     // status create chapter
@@ -126,12 +125,13 @@ function FormAddVideo() {
 }
 const TrListVideo = ({ _id, name, id_course, id_video_youtube, id_chapter, stt }) => {
     const chapterID = id_chapter
+    const courseID = id_course
     const chapter = useQuery(['chapter', chapterID], () => getChapter(chapterID))
     // useMutation Delete Category Course
     const queryClient = useQueryClient()
     const DeleteVideo = useMutation(deleteVideo, {
         onSuccess: () => {
-            queryClient.prefetchQuery(['videos', id_course], () => getVideos(id_course))
+            queryClient.prefetchQuery(['videos', courseID], () => getVideos(courseID))
         }
     })
     // Custom Alert Dialog Delete chapter

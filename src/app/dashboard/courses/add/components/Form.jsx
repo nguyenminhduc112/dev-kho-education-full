@@ -11,7 +11,9 @@ import { Alert } from '@mui/material';
 import { createCourse, getCourses } from 'Libs/fetch/course';
 import { getCategoryCourses } from 'Libs/fetch/category';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 function Form() {
+    const { data: session } = useSession()
     const [urlImage, setUrlImage] = useState('')
     const categoryCourses = useQuery('categoryCourses', getCategoryCourses)
     const { register, handleSubmit, reset, watch, formState: { errors, isValid } } = useForm({
@@ -19,7 +21,7 @@ function Form() {
             title: '',
             benefit: '',
             request: '',
-            status: -1,
+            status: 0,
             category: 'Default',
         }
     })
@@ -27,6 +29,8 @@ function Form() {
     const [isSuccess, setIsSuccess] = useState(false)
     const [isError, setIsError] = useState(false)
     const [error, setError] = useState("")
+    const userID = session ? session.user.id : ''
+    const user = useQuery(['getUser', userID], () => getUser(userID))
     // Addmutation user
     const queryClient = useQueryClient()
     const addMutation = useMutation(createCourse, {
@@ -63,7 +67,7 @@ function Form() {
     // HandleSubmit
     const handleSubmitAddCourse = (data) => {
         try {
-            const id_user = '63f28eef4d7be10eded2a595'
+            const id_user = session ? session.user.id : ''
             const formData = {
                 title: data.title,
                 thumbnail: urlImage,
@@ -141,7 +145,7 @@ function Form() {
                         })} rows={20} />
                         {!isValid && errors.request ? (<p className='error'>{errors.request?.message}</p>) : ''}
                     </Grid>
-                    <Grid item md={6} className="groupInput">
+                    {user.data?.id_role == 4 || user.data?.id_role == 1 ? (<Grid item md={6} className="groupInput">
                         <lable className="lableForm">
                             Status
                         </lable>
@@ -152,14 +156,13 @@ function Form() {
                             {...register("status", {
                                 required: "Hãy chọn trạng thái khóa học"
                             })}
-                            defaultValue={-1}
+                            defaultValue={0}
                         >
-                            <MenuItem value={-1}>---- Select Status ----</MenuItem>
                             <MenuItem value={0}>Inactive</MenuItem>
                             <MenuItem value={1}>Active</MenuItem>
                         </Select>
                         {!isValid && errors.status ? (<p className='error'>{errors.status?.message}</p>) : ''}
-                    </Grid>
+                    </Grid>) : ''}
                     <Grid item md={6} className="groupInput">
                         <lable className="lableForm">
                             Category

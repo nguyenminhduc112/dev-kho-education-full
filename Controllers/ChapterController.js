@@ -25,7 +25,7 @@ export async function createChapter(req, res) {
     try {
         const formData = req.body
         if (!formData) return res.status(404).json({ error: "Form Data Not Provied" })
-        const STT = await Chapter.findOne({ stt: formData.stt }).exec();
+        const STT = await Chapter.findOne({ stt: formData.stt, id_course: formData.id_course }).exec();
         if (STT) {
             return res.status(200).json({ error: "STT đã tồn tại" })
         } else {

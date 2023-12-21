@@ -2,7 +2,7 @@
 import React from 'react'
 import { Button, Grid } from "@material-ui/core";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Header from "../layout/Header";
 import Menu from "../layout/Menu";
 import "./styles.scss";
@@ -13,10 +13,9 @@ import { getCategoryCourse } from 'Libs/fetch/category';
 import Image from 'next/image';
 export default function Category() {
     // Get params CourseID
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
-    var categoryID = params.categoryID
+    const params = useSearchParams()
+
+    var categoryID = params.get('categoryID')
     const router = useRouter()
     const getCoursesCategory = useQuery(['getCoursesCategory', categoryID], () => getCoursesByCategory(categoryID))
     const category = useQuery(['getcategory', categoryID], () => getCategoryCourse(categoryID))

@@ -8,11 +8,10 @@ import { useForm } from 'react-hook-form'
 import { Alert } from '@mui/material';
 // List Fetch
 import { createChapter, deleteChapter, getChapters } from 'Libs/fetch/chapter';
+import { useSearchParams } from 'next/navigation';
 function FormAddChapter() {
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
-    var courseID = params.courseID
+    const params = useSearchParams()
+    var courseID = params.get('courseID')
     const { register, handleSubmit, reset, watch, formState: { errors, isValid } } = useForm({
         defaultValues: {
             chapter: ''

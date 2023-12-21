@@ -29,13 +29,13 @@ export default function MyCourse() {
                 </Grid>
                 <Grid item md={11} style={{ padding: '0px 30px' }}>
                     <h2 className='title font-bold mb-5'>Khóa học của tôi</h2>
-                    {myCourses.data ? myCourses.data?.map((mycourse) => {
-                        return (
-                            <Grid key={mycourse._id} container spacing={4}>
-                                <Tr courseID={mycourse.id_course} videoID={mycourse.id_video} />
-                            </Grid>
-                        )
-                    }) : 'Không có khóa học nào bạn đang học'}
+                    <Grid container spacing={4}>
+                        {myCourses.data ? myCourses.data?.map((mycourse) => {
+                            return (
+                                <Tr key={mycourse._id} courseID={mycourse.id_course} videoID={mycourse.id_video} />
+                            )
+                        }) : 'Không có khóa học nào bạn đang học'}
+                    </Grid>
                 </Grid>
 
             </Grid>
@@ -47,7 +47,7 @@ function Tr({ courseID, videoID }) {
     if (!course.isLoading) {
 
         return (
-            <Grid item md={3} xs={12}>
+            <Grid item md={3} >
                 <div className="boxListCourse__course">
                     <Link href={`/dashboardVideo/?courseID=${course.data?._id}&videoID=${videoID}`} >
                         <Image width={500} height={200} src={`${course.data?.thumbnail}`} alt="" className='boxListCourse__course__img' />

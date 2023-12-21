@@ -15,7 +15,7 @@ import { getChapters } from 'Libs/fetch/chapter';
 // Next Auth
 import { signOut, useSession } from "next-auth/react"
 // Router
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 // Component
 import Header from "../layout/Header";
 import Menu from "../layout/Menu";
@@ -31,10 +31,8 @@ import Image from 'next/image';
 export default function DetailCourse() {
     const { data: session } = useSession()
     // Get params CourseID
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
-    var courseID = params.courseID
+    const params = useSearchParams()
+    var courseID = params.get('courseID')
 
     if (session) {
         var userID = session.user.id

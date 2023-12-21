@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useState } from 'react'
 import './layout.scss'
 import { useRouter } from 'next/navigation'
@@ -14,11 +15,7 @@ function Header() {
     // Solution
     const menuRef = useRef()
     const imgRef = useRef()
-    window.addEventListener('click', (e) => {
-        if (e.target !== menuRef.current && e.target !== imgRef.current) {
-            setOpen(false)
-        }
-    })
+
     const router = useRouter()
     const { data: session } = useSession()
     const changeToLogin = () => {
@@ -50,7 +47,6 @@ function Header() {
                 </div>) : ''}
                 <p className="nameUser">{user.data?.fullname}</p>
             </div>) : (<a href="#" onClick={changeToLogin} className='btnLogin'>Đăng nhập</a>)}
-
         </div>
     )
 }
