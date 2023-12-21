@@ -15,7 +15,7 @@ export async function getMyCourseByUserIDAndCourseID(req, res) {
         const { userID } = req.query
         const { courseID } = req.query
         const myCourses = await MyCourse.find({ id_user: userID, id_course: courseID })
-        if (!myCourses) return res.status(404).json({ error: "Data not found" })
+        if (!myCourses) return res.status(200).json([])
         res.status(200).json(myCourses)
     } catch (error) {
         res.status(404).json({ error: "Error While Fetching Data" })

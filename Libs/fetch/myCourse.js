@@ -9,6 +9,7 @@ export const getMyCourseByUserID = async (userID) => {
 export const getMyCourseByUserIDAndCourseID = async ({ userID, courseID }) => {
     const response = fetch(`/api/mycourse?userID=${userID}&courseID=${courseID}`)
     const json = await (await response).json()
+
     return json
 }
 
