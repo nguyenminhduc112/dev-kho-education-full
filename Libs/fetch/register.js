@@ -1,5 +1,4 @@
 import md5 from "md5"
-const BASE_URL = process.env.URL_BASE
 export const registerUser = async ({ formData, id_role = 2 }) => {
     console.log(formData)
     const date = new Date()
@@ -19,7 +18,7 @@ export const registerUser = async ({ formData, id_role = 2 }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/users/register`, Option)
+    const response = fetch(`/api/users/register`, Option)
     const json = await (await response).json()
     return json
 }

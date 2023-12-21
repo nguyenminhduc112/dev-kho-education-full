@@ -1,24 +1,24 @@
-const BASE_URL = process.env.URL_BASE
+
 export const getCourses = async () => {
-    const response = fetch(`${BASE_URL}/api/course`)
+    const response = fetch(`/api/course`)
     const json = await (await response).json()
     return json
 }
 export const getCoursesByCategory = async (categoryID) => {
-    const response = fetch(`${BASE_URL}/api/course/?categoryID=${categoryID}`)
+    const response = fetch(`/api/course/?categoryID=${categoryID}`)
     const json = await (await response).json()
     return json
 }
 
 export const getCourse = async (courseID) => {
-    const response = fetch(`${BASE_URL}/api/course/?courseID=${courseID}`)
+    const response = fetch(`/api/course/?courseID=${courseID}`)
     const json = await (await response).json()
     if (json) return json
     return {}
 }
 
 export const getCoursesByUserID = async (userID) => {
-    const response = fetch(`${BASE_URL}/api/course/?userID=${userID}`)
+    const response = fetch(`/api/course/?userID=${userID}`)
     const json = await (await response).json()
     if (json) return json
     return {}
@@ -43,7 +43,7 @@ export const createCourse = async ({ formData, id_user = '63f28eef4d7be10eded2a5
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/course`, Option)
+    const response = fetch(`/api/course`, Option)
     const json = await (await response).json()
     return json
 }
@@ -65,7 +65,7 @@ export const updateCourse = async ({ formData, courseID }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/course/?courseID=${courseID}`, Option)
+    const response = fetch(`/api/course/?courseID=${courseID}`, Option)
     const json = await (await response).json()
     return json
 }
@@ -74,7 +74,7 @@ export const deleteCourse = async (courseID) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     }
-    const response = fetch(`${BASE_URL}/api/course/?courseID=${courseID}`, Option)
+    const response = fetch(`/api/course/?courseID=${courseID}`, Option)
     const json = await (await response).json()
     return json
 }

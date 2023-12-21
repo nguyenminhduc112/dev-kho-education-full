@@ -1,13 +1,13 @@
-const BASE_URL = process.env.URL_BASE
+
 
 export const getChapters = async (courseID) => {
-    const response = fetch(`${BASE_URL}/api/chapter/?courseID=${courseID}`)
+    const response = fetch(`/api/chapter/?courseID=${courseID}`)
     const json = await (await response).json()
     return json
 }
 
 export const getChapter = async (chapterID) => {
-    const response = fetch(`${BASE_URL}/api/chapter/?chapterID=${chapterID}`)
+    const response = fetch(`/api/chapter/?chapterID=${chapterID}`)
     const json = await (await response).json()
     if (json) return json
     return {}
@@ -23,7 +23,7 @@ export const createChapter = async ({ formData, courseID }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/chapter`, Option)
+    const response = fetch(`/api/chapter`, Option)
     const json = await (await response).json()
     return json
 }
@@ -37,7 +37,7 @@ export const updateChapter = async (formData) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/chapter`, Option)
+    const response = fetch(`/api/chapter`, Option)
     const json = await (await response).json()
     return json
 }
@@ -46,7 +46,7 @@ export const deleteChapter = async (chapterID) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     }
-    const response = fetch(`${BASE_URL}/api/chapter/?chapterID=${chapterID}`, Option)
+    const response = fetch(`/api/chapter/?chapterID=${chapterID}`, Option)
     const json = await (await response).json()
     return json
 }

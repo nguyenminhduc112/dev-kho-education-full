@@ -1,13 +1,13 @@
-const BASE_URL = process.env.URL_BASE
+
 
 export const getMyCourseByUserID = async (userID) => {
-    const response = fetch(`${BASE_URL}/api/mycourse?userID=${userID}`)
+    const response = fetch(`/api/mycourse?userID=${userID}`)
     const json = await (await response).json()
     return json
 }
 
 export const getMyCourseByUserIDAndCourseID = async ({ userID, courseID }) => {
-    const response = fetch(`${BASE_URL}/api/mycourse?userID=${userID}&courseID=${courseID}`)
+    const response = fetch(`/api/mycourse?userID=${userID}&courseID=${courseID}`)
     const json = await (await response).json()
     return json
 }
@@ -23,7 +23,7 @@ export const createMyCourse = async (formData) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/mycourse`, Option)
+    const response = fetch(`/api/mycourse`, Option)
     const json = await (await response).json()
     return json
 }
@@ -39,7 +39,7 @@ export const updateMyCourse = async ({ formData }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/myCourse?myCourseID=${formData.myCourseID}`, Option)
+    const response = fetch(`/api/myCourse?myCourseID=${formData.myCourseID}`, Option)
     const json = await (await response).json()
     return json
 }

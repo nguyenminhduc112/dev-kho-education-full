@@ -1,17 +1,15 @@
-const BASE_URL = process.env.URL_BASE
-
 export const getVideos = async (courseID) => {
-    const response = fetch(`${BASE_URL}/api/video/?courseID=${courseID}`)
+    const response = fetch(`/api/video/?courseID=${courseID}`)
     const json = await (await response).json()
     return json
 }
 export const getVideosByChapterID = async (chapterID) => {
-    const response = fetch(`${BASE_URL}/api/video/?chapterID=${chapterID}`)
+    const response = fetch(`/api/video/?chapterID=${chapterID}`)
     const json = await (await response).json()
     return json
 }
 export const getVideo = async (videoID) => {
-    const response = fetch(`${BASE_URL}/api/video/?videoID=${videoID}`)
+    const response = fetch(`/api/video/?videoID=${videoID}`)
     const json = await (await response).json()
     if (json) return json
     return {}
@@ -29,7 +27,7 @@ export const createVideo = async ({ formData, courseID }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/video`, Option)
+    const response = fetch(`/api/video`, Option)
     const json = await (await response).json()
     return json
 }
@@ -45,7 +43,7 @@ export const updateVideo = async (formData) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/video`, Option)
+    const response = fetch(`/api/video`, Option)
     const json = await (await response).json()
     return json
 }
@@ -54,7 +52,7 @@ export const deleteVideo = async (videoID) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     }
-    const response = fetch(`${BASE_URL}/api/video/?videoID=${videoID}`, Option)
+    const response = fetch(`/api/video/?videoID=${videoID}`, Option)
     const json = await (await response).json()
     return json
 }

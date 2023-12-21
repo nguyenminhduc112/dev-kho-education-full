@@ -1,4 +1,4 @@
-const BASE_URL = process.env.URL_BASE
+
 
 // Danh sách mục lục khóa học
 export const getCategoryCourses = async () => {
@@ -8,7 +8,7 @@ export const getCategoryCourses = async () => {
 }
 // Lấy một mục lục khóa học theo id
 export const getCategoryCourse = async (id_cat_cour) => {
-    const response = fetch(`${BASE_URL}/api/category/course?id_cat_cour=${id_cat_cour}`)
+    const response = fetch(`/api/category/course?id_cat_cour=${id_cat_cour}`)
     const json = await (await response).json()
     if (json) return json
     return {}
@@ -16,13 +16,13 @@ export const getCategoryCourse = async (id_cat_cour) => {
 
 // Danh sách mục lục khóa học
 export const getCategoryQuestions = async () => {
-    const response = fetch(`${BASE_URL}/api/category/question`)
+    const response = fetch(`/api/category/question`)
     const json = await (await response).json()
     return json
 }
 // Lấy một mục lục khóa học theo id
 export const getCategoryQuestion = async (id_cat_qes) => {
-    const response = fetch(`${BASE_URL}/api/category/question?id_cat_qes=${id_cat_qes}`)
+    const response = fetch(`/api/category/question?id_cat_qes=${id_cat_qes}`)
     const json = await (await response).json()
     if (json) return json
     return {}
@@ -38,7 +38,7 @@ export const createCategoryCourse = async (formData) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/category/course`, Option)
+    const response = fetch(`/api/category/course`, Option)
     const json = await (await response).json()
     return json
 }
@@ -53,7 +53,7 @@ export const createCategoryQuestion = async (formData) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/category/question`, Option)
+    const response = fetch(`/api/category/question`, Option)
     const json = await (await response).json()
     return json
 }
@@ -64,7 +64,7 @@ export const deleteCategoryCourse = async (id_cat_cour) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     }
-    const response = fetch(`${BASE_URL}/api/category/course?id_cat_cour=${id_cat_cour}`, Option)
+    const response = fetch(`/api/category/course?id_cat_cour=${id_cat_cour}`, Option)
     const json = await (await response).json()
     return json
 }
@@ -76,7 +76,7 @@ export const deleteCategoryQuestion = async (id_cat_qes) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     }
-    const response = fetch(`${BASE_URL}/api/category/question?id_cat_qes=${id_cat_qes}`, Option)
+    const response = fetch(`/api/category/question?id_cat_qes=${id_cat_qes}`, Option)
     const json = await (await response).json()
     return json
 }

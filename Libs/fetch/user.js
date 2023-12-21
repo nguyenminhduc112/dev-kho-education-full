@@ -1,14 +1,12 @@
 
-const BASE_URL = process.env.URL_BASE
-
 export const getUsers = async () => {
-    const response = fetch(`${BASE_URL}/api/users`)
+    const response = fetch(`/api/users`)
     const json = await (await response).json()
     return json
 }
 // get user
 export const getUser = async (userID) => {
-    const response = fetch(`${BASE_URL}/api/users/?userID=${userID}`)
+    const response = fetch(`/api/users/?userID=${userID}`)
     const json = await (await response).json()
     if (json) return json
     return {}
@@ -30,7 +28,7 @@ export const updateUser = async ({ formData, userID }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }
-    const response = fetch(`${BASE_URL}/api/users/?userID=${userID}`, Option)
+    const response = fetch(`/api/users/?userID=${userID}`, Option)
     const json = await (await response).json()
     return json
 }
@@ -40,7 +38,7 @@ export const deleteUser = async (userID) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     }
-    const response = fetch(`${BASE_URL}/api/users/?userID=${userID}`, Option)
+    const response = fetch(`/api/users/?userID=${userID}`, Option)
     const json = await (await response).json()
     return json
 }
