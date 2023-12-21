@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = process.env.URL_BASE
 
 export const getMyCourseByUserID = async (userID) => {
     const response = fetch(`${BASE_URL}/api/mycourse?userID=${userID}`)

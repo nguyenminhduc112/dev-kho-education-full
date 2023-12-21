@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = process.env.URL_BASE
 
 // Danh sách mục lục khóa học
 export const getCategoryCourses = async () => {

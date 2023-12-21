@@ -1,5 +1,5 @@
 import md5 from "md5"
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = process.env.URL_BASE
 export const registerUser = async ({ formData, id_role = 2 }) => {
     console.log(formData)
     const date = new Date()
