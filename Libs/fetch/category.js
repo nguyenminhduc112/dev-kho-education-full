@@ -2,7 +2,7 @@ const BASE_URL = process.env.URL_BASE
 
 // Danh sách mục lục khóa học
 export const getCategoryCourses = async () => {
-    const response = fetch(`${BASE_URL}/api/category/course`)
+    const response = fetch(`/api/category/course`)
     const json = await (await response).json()
     return json
 }
