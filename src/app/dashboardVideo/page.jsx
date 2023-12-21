@@ -43,13 +43,13 @@ export default function DashboardVideo() {
     var userID = session ? session.user.id : ''
     const myCourse = useQuery(['myCourse', { userID, courseID }], () => getMyCourseByUserIDAndCourseID({ userID, courseID }))
     // AddMutation
-    const addMutation = useMutation(createMyCourse, {
+    const addMutation = useMutation({ mutationFn: createMyCourse }, {
         onSuccess: () => {
             queryClient.prefetchQuery(['myCourse', { userID, courseID }], () => getMyCourseByUserIDAndCourseID({ userID, courseID }))
         }
     })
 
-    if (myCourse.data.length == 0) {
+    if (myCourse.refetch.length == 0) {
         const formData = {
             id_user: userID,
             id_course: courseID,
