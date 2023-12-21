@@ -49,7 +49,7 @@ export default function DashboardVideo() {
         }
     })
 
-    if (myCourse.refetch.length == 0) {
+    if (myCourse.data.length == 0) {
         const formData = {
             id_user: userID,
             id_course: courseID,
