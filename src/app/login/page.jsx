@@ -24,6 +24,7 @@ export default function Home() {
             setAlignment('registerTeacher')
         }
     };
+
     return (
         <>
             <CssBaseline />
