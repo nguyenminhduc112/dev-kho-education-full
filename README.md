@@ -1,38 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DevKho-Education Website
+- The system will have an overview website for course management and a website where users can register for courses.
+- In addition to searching for documents and knowledge through blogs and questions, learners can also search for learning paths and participate in online courses.
+- Teachers host online courses, write blogs, or create tests.
+- Future developments will include question and blog features.
+## Technologies Used
+- ReactJs 18.2.0
+- NextJs 13
+- MongoDb 
+- NextAuth.js
+- React-Query
+- Material UI
+- Scss
 
-## Getting Started
+## Installation
 
-First, run the development server:
+To run the website using localhost after downloading the code, navigate to the code folder and enter the following commands:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  npm install //download packages
+  npm run dev //run website by localhost:3000
 ```
+## Use
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Directory Name | Uses |
+|--------------|-------|
+| ./Controllers | Is the department responsible for handling user requests |
+| ./Models | contains a data structure |
+| ./Database | Database connection | 
+| ./Libs/fech | Functions that use the system's API | 
+| ./public/images | Where the pictures are kept | 
+| ./src/app | Next's router pages | 
+| ./src/pages/api | Next's router api pages | 
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Authors
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- [@nguyenminhduc112](https://github.com/nguyenminhduc112)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Light/dark mode toggle
+- Cross platform
+- Pages Question
+- Pages Blog
+- .....
 
-## Learn More
+## Feedback
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you have any feedback, please reach out to us at nguyenminhduc2001pt@gmail.com
