@@ -33,8 +33,8 @@ To run the website using localhost after downloading the code, navigate to the c
 | ./src/pages/api | Next's router api pages | 
 
 ## Account Admin
-username: admin123
-password: Admin123!@#
+- username: admin123
+- password: Admin123!@#
 
 ## Authors
 
